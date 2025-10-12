@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block title %}Home - The White Orchard{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<div class="hero-section text-center py-5">
+    <div class="container">
+        <h1 class="hero-title">The White Orchard</h1>
+        <p class="hero-subtitle">Experience Elegance in Every Cup</p>
+        <p style="font-size: 1.1rem; color: #6B6B6B; max-width: 600px; margin: 0 auto 3rem;">
+            Indulge in an exquisite afternoon tea experience featuring handcrafted pastries, 
+            delicate sandwiches, and premium teas in our elegant setting.
+        </p>
+        <a href="{% url 'create_reservation' %}" class="btn btn-primary btn-lg me-2">Book Your Table</a>
+        <a href="{% url 'menu' %}" class="btn btn-outline-secondary btn-lg">View Menu</a>
+    </div>
+</div>
+
+<!-- Features Section -->
+<div class="container py-5">
+    <div class="row text-center">
+        <div class="col-md-4 mb-4">
+            <div style="font-size: 3rem;">🌸</div>
+            <h3 style="font-family: 'Playfair Display', serif; color: #D4AF37;">Elegant Setting</h3>
+            <p style="color: #6B6B6B;">Refined atmosphere perfect for any occasion</p>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div style="font-size: 3rem;">🍰</div>
+            <h3 style="font-family: 'Playfair Display', serif; color: #D4AF37;">Exquisite Treats</h3>
+            <p style="color: #6B6B6B;">Handcrafted pastries and delicate sandwiches</p>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div style="font-size: 3rem;">☕</div>
+            <h3 style="font-family: 'Playfair Display', serif; color: #D4AF37;">Premium Teas</h3>
+            <p style="color: #6B6B6B;">Finest selections from around the world</p>
+        </div>
+    </div>
+</div>
+
+<!-- Call to Action -->
+<div class="text-center py-5" style="background-color: #FFE5EE;">
+    <div class="container">
+        <h2 style="font-family: 'Playfair Display', serif; color: #4A4A4A;">Ready to Experience Excellence?</h2>
+        <p style="color: #6B6B6B; font-size: 1.1rem;">Book your table today and create unforgettable memories</p>
+        <a href="{% url 'create_reservation' %}" class="btn btn-primary btn-lg mt-3">Reserve Now</a>
+    </div>
+</div>
+{% endblock %}
