@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}Menu - The White Orchard{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <h1 class="text-center mb-5 page-title">Our Afternoon Tea Menu</h1>
+    <p class="text-center text-muted mb-5" style="max-width: 600px; margin: 0 auto;">
+        A carefully curated selection of savories, scones, pastries, and premium beverages
+    </p>
+    
+    <div class="row">
+        {% for item in items %}
+        <div class="col-md-6 mb-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body p-4">
+                    <h5 class="card-title" style="font-family: 'Playfair Display', serif; color: #D4AF37;">
+                        {{ item.name }}
+                    </h5>
+                    <p class="text-muted small mb-2">{{ item.category }}</p>
+                    <p class="card-text" style="color: #6B6B6B;">{{ item.description }}</p>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <div class="col-12 text-center">
+            <p class="text-muted">Menu items coming soon!</p>
+        </div>
+        {% endfor %}
+    </div>
+    
+    <div class="text-center mt-5">
+        <p class="text-muted mb-4">
+            <em>Please inform us of any dietary requirements when making your reservation</em>
+        </p>
+        <a href="{% url 'create_reservation' %}" class="btn btn-primary btn-lg">Book Your Experience</a>
+    </div>
+</div>
+{% endblock %}
