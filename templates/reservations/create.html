@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+
+{% block title %}Book a Table - The White Orchard{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-7">
+            <div class="card shadow-lg">
+                <div class="card-body p-5">
+                    <h2 class="text-center mb-4" style="font-family: 'Playfair Display', serif; color: #D4AF37;">
+                        Book Your Afternoon Tea
+                    </h2>
+                    <p class="text-center text-muted mb-5">
+                        Reserve your table for an elegant afternoon tea experience
+                    </p>
+                    
+                    <form method="POST">
+                        {% csrf_token %}
+                        
+                        <div class="mb-3">
+                            <label class="form-label">Full Name *</label>
+                            {{ form.customer_name }}
+                            {% if form.customer_name.errors %}
+                                <div class="text-danger small mt-1">{{ form.customer_name.errors }}</div>
+                            {% endif %}
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Email Address *</label>
+                                {{ form.customer_email }}
+                                {% if form.customer_email.errors %}
+                                    <div class="text-danger small mt-1">{{ form.customer_email.errors }}</div>
+                                {% endif %}
+                            </div>
+                            
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Phone Number *</label>
+                                {{ form.customer_phone }}
+                                {% if form.customer_phone.errors %}
+                                    <div class="text-danger small mt-1">{{ form.customer_phone.errors }}</div>
+                                {% endif %}
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Date *</label>
+                                {{ form.date }}
+                                {% if form.date.errors %}
+                                    <div class="text-danger small mt-1">{{ form.date.errors }}</div>
+                                {% endif %}
+                            </div>
+                            
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Time Slot *</label>
+                                {{ form.time_slot }}
+                                {% if form.time_slot.errors %}
+                                    <div class="text-danger small mt-1">{{ form.time_slot.errors }}</div>
+                                {% endif %}
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label class="form-label">Number of Guests (1-8) *</label>
+                            {{ form.number_of_guests }}
+                            <small class="form-text text-muted">Maximum 8 guests per reservation</small>
+                            {% if form.number_of_guests.errors %}
+                                <div class="text-danger small mt-1">{{ form.number_of_guests.errors }}</div>
+                            {% endif %}
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label class="form-label">Special Requests (Optional)</label>
+                            {{ form.special_requests }}
+                            <small class="form-text text-muted">Dietary requirements, allergies, celebrations, etc.</small>
+                            {% if form.special_requests.errors %}
+                                <div class="text-danger small mt-1">{{ form.special_requests.errors }}</div>
+                            {% endif %}
+                        </div>
+                        
+                        {% if form.non_field_errors %}
+                            <div class="alert alert-danger">
+                                {{ form.non_field_errors }}
+                            </div>
+                        {% endif %}
+                        
+                        <button type="submit" class="btn btn-primary w-100 btn-lg">
+                            Confirm Reservation
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
