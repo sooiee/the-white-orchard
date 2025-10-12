@@ -100,9 +100,7 @@ class FormTest(TestCase):
             'number_of_guests': 2,
         }
         response = self.client.post(reverse('create_reservation'), data=form_data)
-        # Should redirect after successful creation
         self.assertEqual(response.status_code, 302)
-        # Check reservation was created
         self.assertEqual(Reservation.objects.count(), 1)
     
     def test_past_date_validation(self):
@@ -115,7 +113,6 @@ class FormTest(TestCase):
             'number_of_guests': 2,
         }
         response = self.client.post(reverse('create_reservation'), data=form_data)
-        # Should not redirect (stays on form page)
         self.assertEqual(response.status_code, 200)
-        # Should show error
         self.assertContains(response, 'Cannot book a date in the past')
+        
