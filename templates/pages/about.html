@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block title %}About Us - The White Orchard{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <h1 class="text-center mb-5 page-title">About The White Orchard</h1>
+    
+    <div class="row mb-5">
+        <div class="col-md-8 mx-auto">
+            <div class="card shadow-sm p-4">
+                <h3 style="font-family: 'Playfair Display', serif; color: #D4AF37;">Our Story</h3>
+                <p style="color: #6B6B6B; line-height: 1.8;">
+                    The White Orchard was founded with a passion for creating memorable afternoon tea experiences. 
+                    Our elegant setting and carefully curated menu transport guests to a world of refined luxury 
+                    and timeless tradition.
+                </p>
+                <p style="color: #6B6B6B; line-height: 1.8;">
+                    Each element of our afternoon tea is thoughtfully selected and prepared with the finest ingredients, 
+                    from our delicate pastries to our selection of premium teas sourced from around the world.
+                </p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-6 mb-4">
+            <div class="card shadow-sm p-4" style="background: #FFE5EE;">
+                <h3 style="font-family: 'Playfair Display', serif; color: #D4AF37;">Contact Information</h3>
+                <p style="color: #6B6B6B;"><strong>Address:</strong><br>123 Garden Lane<br>London, UK<br>SW1A 1AA</p>
+                <p style="color: #6B6B6B;"><strong>Phone:</strong><br>+44 20 1234 5678</p>
+                <p style="color: #6B6B6B;"><strong>Email:</strong><br>info@thewhiteorchard.com</p>
+            </div>
+        </div>
+        
+        <div class="col-md-6 mb-4">
+            <div class="card shadow-sm p-4" style="background: #FFE5EE;">
+                <h3 style="font-family: 'Playfair Display', serif; color: #D4AF37;">Opening Hours</h3>
+                <p style="color: #6B6B6B;">
+                    <strong>Tuesday - Sunday</strong><br>
+                    11:00 AM - 6:00 PM
+                </p>
+                <p style="color: #6B6B6B;">
+                    <em>Closed Mondays</em>
+                </p>
+                <p style="color: #6B6B6B; margin-top: 2rem;">
+                    <strong>Time Slots Available:</strong><br>
+                    11:00 AM - Morning Tea<br>
+                    1:00 PM - Afternoon Tea<br>
+                    3:00 PM - Afternoon Tea<br>
+                    5:00 PM - Evening Tea
+                </p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="text-center mt-5">
+        <a href="{% url 'create_reservation' %}" class="btn btn-primary btn-lg">Book Your Table</a>
+    </div>
+</div>
+{% endblock %}
