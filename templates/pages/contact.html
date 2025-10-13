@@ -1,0 +1,212 @@
+{% extends 'base.html' %}
+
+{% block title %}Contact Us - The White Orchard{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <h1 class="text-center mb-5 page-title">Contact Us</h1>
+    
+    <div class="row">
+        <!-- Contact Information -->
+        <div class="col-md-6 mb-4">
+            <div class="card shadow-sm p-4 bg-pink-light h-100">
+                <h3 class="page-title mb-4">Get In Touch</h3>
+                <p class="text-medium mb-4">
+                    Have a question or special request? We'd love to hear from you. 
+                    Fill out the form and we'll respond within 24 hours.
+                </p>
+                
+                <div class="mt-4">
+                    <div class="mb-4">
+                        <h5 class="text-gold mb-2">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="me-2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                            Address
+                        </h5>
+                        <p class="text-medium mb-0">
+                            123 Garden Lane<br>
+                            London, UK<br>
+                            SW1A 1AA
+                        </p>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <h5 class="text-gold mb-2">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="me-2">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                            </svg>
+                            Phone
+                        </h5>
+                        <p class="text-medium mb-0">
+                            <a href="tel:+442012345678" class="text-decoration-none">+44 20 1234 5678</a>
+                        </p>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <h5 class="text-gold mb-2">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="me-2">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                <polyline points="22,6 12,13 2,6"></polyline>
+                            </svg>
+                            Email
+                        </h5>
+                        <p class="text-medium mb-0">
+                            <a href="mailto:info@thewhiteorchard.com" class="text-decoration-none">info@thewhiteorchard.com</a>
+                        </p>
+                    </div>
+                    
+                    <div>
+                        <h5 class="text-gold mb-2">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="me-2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            Opening Hours
+                        </h5>
+                        <p class="text-medium mb-1">
+                            <strong>Tuesday - Sunday:</strong><br>
+                            11:00 AM - 6:00 PM
+                        </p>
+                        <p class="text-medium fst-italic mb-0">
+                            Closed Mondays
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Enquiry Form -->
+        <div class="col-md-6">
+            <div class="card shadow-sm p-4">
+                <h3 class="page-title mb-4">Send an Enquiry</h3>
+                
+                <form method="POST" novalidate>
+                    {% csrf_token %}
+                    
+                    <div class="mb-3">
+                        <label for="id_name" class="form-label">
+                            Name <span class="text-danger">*</span>
+                        </label>
+                        {{ form.name }}
+                        {% if form.name.errors %}
+                            <div class="text-danger small mt-1">
+                                {% for error in form.name.errors %}
+                                    {{ error }}
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="id_email" class="form-label">
+                                Email <span class="text-danger">*</span>
+                            </label>
+                            {{ form.email }}
+                            {% if form.email.errors %}
+                                <div class="text-danger small mt-1">
+                                    {% for error in form.email.errors %}
+                                        {{ error }}
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                        
+                        <div class="col-md-6 mb-3">
+                            <label for="id_phone" class="form-label">
+                                Phone <span class="text-muted small">(Optional)</span>
+                            </label>
+                            {{ form.phone }}
+                            {% if form.phone.errors %}
+                                <div class="text-danger small mt-1">
+                                    {% for error in form.phone.errors %}
+                                        {{ error }}
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="id_subject" class="form-label">
+                            Subject <span class="text-danger">*</span>
+                        </label>
+                        {{ form.subject }}
+                        {% if form.subject.errors %}
+                            <div class="text-danger small mt-1">
+                                {% for error in form.subject.errors %}
+                                    {{ error }}
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="mb-4">
+                        <label for="id_message" class="form-label">
+                            Message <span class="text-danger">*</span>
+                        </label>
+                        {{ form.message }}
+                        {% if form.message.errors %}
+                            <div class="text-danger small mt-1">
+                                {% for error in form.message.errors %}
+                                    {{ error }}
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                        <small class="form-text text-muted">
+                            Please include any dietary requirements, special occasions, or specific questions.
+                        </small>
+                    </div>
+                    
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-primary btn-lg">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="me-2">
+                                <line x1="22" y1="2" x2="11" y2="13"></line>
+                                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                            </svg>
+                            Send Enquiry
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Additional Information -->
+    <div class="row mt-5">
+        <div class="col-12">
+            <div class="card shadow-sm p-4 bg-cream">
+                <h4 class="text-gold mb-3">Frequently Asked Questions</h4>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <h6 class="text-dark">Do I need to book in advance?</h6>
+                        <p class="text-medium mb-0">
+                            We highly recommend booking in advance to ensure availability, especially for weekends and special occasions.
+                        </p>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <h6 class="text-dark">Can you accommodate dietary requirements?</h6>
+                        <p class="text-medium mb-0">
+                            Yes! Please let us know about any allergies or dietary requirements when booking, and we'll be happy to accommodate.
+                        </p>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <h6 class="text-dark">Is there parking available?</h6>
+                        <p class="text-medium mb-0">
+                            Street parking is available nearby, and there's a public car park within a 5-minute walk.
+                        </p>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <h6 class="text-dark">Can I bring children?</h6>
+                        <p class="text-medium mb-0">
+                            Absolutely! We welcome guests of all ages and can provide high chairs if needed.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
