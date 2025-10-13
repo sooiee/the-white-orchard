@@ -10,7 +10,7 @@ class ReservationForm(forms.ModelForm):
         model = Reservation
         fields = [
             'customer_name',
-            'customer_email', 
+            'customer_email',
             'customer_phone',
             'date',
             'time_slot',
@@ -23,7 +23,9 @@ class ReservationForm(forms.ModelForm):
                 'class': 'form-control'
             }),
             'customer_name': forms.TextInput(attrs={'class': 'form-control'}),
-            'customer_email': forms.EmailInput(attrs={'class': 'form-control'}),
+            'customer_email': forms.EmailInput(attrs={
+                'class': 'form-control'
+            }),
             'customer_phone': forms.TextInput(attrs={'class': 'form-control'}),
             'time_slot': forms.Select(attrs={'class': 'form-select'}),
             'number_of_guests': forms.NumberInput(attrs={
@@ -53,9 +55,24 @@ class EnquiryForm(forms.ModelForm):
         model = Enquiry
         fields = ['name', 'email', 'phone', 'subject', 'message']
         widgets = {
-            'name': forms.TextInput(attrs={'class': 'form-control'}),
-            'email': forms.EmailInput(attrs={'class': 'form-control'}),
-            'phone': forms.TextInput(attrs={'class': 'form-control'}),
-            'subject': forms.TextInput(attrs={'class': 'form-control'}),
-            'message': forms.Textarea(attrs={'class': 'form-control', 'rows': 5}),
+            'name': forms.TextInput(attrs={
+                'class': 'form-control',
+                'aria-required': 'true'
+            }),
+            'email': forms.EmailInput(attrs={
+                'class': 'form-control',
+                'aria-required': 'true'
+            }),
+            'phone': forms.TextInput(attrs={
+                'class': 'form-control'
+            }),
+            'subject': forms.TextInput(attrs={
+                'class': 'form-control',
+                'aria-required': 'true'
+            }),
+            'message': forms.Textarea(attrs={
+                'class': 'form-control',
+                'rows': 5,
+                'aria-required': 'true'
+            }),
         }
