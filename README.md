@@ -227,7 +227,7 @@ All color combinations meet WCAG 2.1 Level AA standards:
 - Images would showcase actual menu items and venue
 - Customer consent obtained for any testimonial photos
 
-**Image Optimization:**
+**Image Optimisation:**
 
 - All images compressed using TinyPNG/Squoosh
 - WebP format for modern browsers with fallbacks
@@ -262,7 +262,7 @@ All color combinations meet WCAG 2.1 Level AA standards:
 - Confirmation message displayed
 - Redirects to home page
 
-![Authentication Features]()
+
 
 #### Booking Management
 
@@ -303,7 +303,7 @@ All color combinations meet WCAG 2.1 Level AA standards:
 - Updates status to "cancelled" (soft delete)
 - Success message after cancellation
 
-![Booking Management]()
+
 
 #### Menu Display (US02)
 
@@ -362,7 +362,7 @@ All color combinations meet WCAG 2.1 Level AA standards:
 - Touch-friendly tap targets
 - Smooth collapse/expand animation
 
-![Navigation]()
+
 
 ### FOOTER
 
@@ -589,9 +589,9 @@ Comprehensive testing documentation is available in [TESTING.md](TESTING.md)
 
 **Performance:**
 
-- Lighthouse Performance Score: 90+
-- Lighthouse Accessibility Score: 98+
-- Lighthouse Best Practices Score: 95+
+- Lighthouse Performance Score: 91+
+- Lighthouse Accessibility Score: 93+
+- Lighthouse Best Practices Score: 100
 - Lighthouse SEO Score: 100
 
 See [TESTING.md](TESTING.md) for full testing documentation and detailed results.

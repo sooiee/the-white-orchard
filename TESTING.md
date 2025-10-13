@@ -1,6 +1,6 @@
 # Testing Documentation - The White Orchard
 
-![The White Orchard](docs/testing-banner.png)
+![The White Orchard](static/images/Screenshot%202025-10-13%20at%2016.16.14.png)
 
 This document contains comprehensive testing information for The White Orchard afternoon tea reservation system.
 
@@ -234,34 +234,33 @@ All features tested manually across multiple devices and browsers. Tests repeate
 
 | User Story | Test | Result | Evidence |
 |------------|------|--------|----------|
-| **US01:** Understand site purpose | Visit home page | Hero section clearly explains afternoon tea offering | Screenshot |
-| **US02:** View menu | Navigate to menu page | All 8 items displayed with descriptions | Screenshot |
-| **US03:** Make reservation without account | Fill booking form as guest | Reservation created successfully | Screenshot |
-| **US04:** Find location & hours | Visit about page | All information clearly displayed | Screenshot |
-| **US05:** Mobile responsiveness | Test on mobile device | Site fully functional on mobile | Screenshot |
+| **US01:** Understand site purpose | Visit home page | Hero section clearly explains afternoon tea offering | 
+| **US02:** View menu | Navigate to menu page | All 8 items displayed with descriptions | 
+| **US03:** Make reservation without account | Fill booking form as guest | Reservation created successfully | 
+| **US04:** Find location & hours | Visit about page | All information clearly displayed | 
+| **US05:** Mobile responsiveness | Test on mobile device | Site fully functional on mobile | 
 
 ### Registered User Goals
 
 | User Story | Test | Result | Evidence |
 |------------|------|--------|----------|
-| **US06:** Create account | Register with valid details | Account created, auto-login | Screenshot |
-| **US07:** View my bookings | Login, navigate to My Bookings | All user bookings displayed | Screenshot |
-| **US08:** Edit booking | Click edit on future booking | Form loads, changes save | Screenshot |
-| **US09:** Cancel booking | Click cancel, confirm | Booking cancelled successfully | Screenshot |
-| **US10:** See username when logged in | Login successfully | Username shown in navigation dropdown | Screenshot |
-| **US11:** Send enquiry | Fill contact form, submit | Enquiry saved, confirmation shown | Screenshot |
+| **US06:** Create account | Register with valid details | Account created, auto-login | 
+| **US07:** View my bookings | Login, navigate to My Bookings | All user bookings displayed | 
+| **US08:** Edit booking | Click edit on future booking | Form loads, changes save | 
+| **US09:** Cancel booking | Click cancel, confirm | Booking cancelled successfully | 
+| **US10:** See username when logged in | Login successfully | Username shown in navigation dropdown | 
+| **US11:** Send enquiry | Fill contact form, submit | Enquiry saved, confirmation shown | 
 
 ### Admin Goals
 
 | User Story | Test | Result | Evidence |
 |------------|------|--------|----------|
-| **US12:** View all reservations | Access admin panel | All bookings visible in list | Screenshot |
-| **US13:** Filter reservations | Use admin filters | Results filtered correctly | Screenshot |
-| **US14:** Change booking status | Edit reservation in admin | Status updated | Screenshot |
-| **US15:** Manage menu items | Add/edit/delete items | CRUD operations successful | Screenshot |
-| **US16:** Manage time slots | Edit time slots | Changes reflected on site | Screenshot |
-| **US17:** View enquiries | Check enquiries in admin | All enquiries visible | Screenshot |
-
+| **US12:** View all reservations | Access admin panel | All bookings visible in list | 
+| **US13:** Filter reservations | Use admin filters | Results filtered correctly | 
+| **US14:** Change booking status | Edit reservation in admin | Status updated | 
+| **US15:** Manage menu items | Add/edit/delete items | CRUD operations successful | 
+| **US16:** Manage time slots | Edit time slots | Changes reflected on site | 
+| **US17:** View enquiries | Check enquiries in admin | All enquiries visible | 
 ---
 
 ## CODE VALIDATION
@@ -353,9 +352,8 @@ Browser compatability tested used PowerMapper ~ No compatiblity issues detected.
 ![powermapperscreenshot](static/images/Screenshot%202025-10-13%20at%2015.47.37.png)
 
 ## RESPONSIVENESS
-
-### Devices Tested
-
+Responsiveness tested using Chrome Developer Tools across several breakpoints from phone to desktop, and on amiresponsive.
+![screenshot](static/images/Screenshot%202025-10-13%20at%2016.16.14.png)
 
 ### Responsive Design Testing Tools
 
@@ -364,16 +362,6 @@ Browser compatability tested used PowerMapper ~ No compatiblity issues detected.
 - Tested all standard device presets
 - Custom breakpoints tested (320px to 2560px)
 
-**Firefox Responsive Design Mode:**
-
-- Touch simulation enabled
-- Various DPR (Device Pixel Ratio) tested
-
-**Real Devices:**
-
-- Physical testing on 6+ devices
-- Touch interactions verified
-- Form input on mobile keyboards tested
 
 ### Breakpoints Used
 
@@ -421,7 +409,6 @@ Base: 320px and up
 
 - ✅ Images scale proportionally
 - ✅ No horizontal scrolling
-- ✅ Lazy loading on mobile
 
 **Forms:**
 
@@ -450,45 +437,24 @@ Base: 320px and up
 
 #### Desktop Results
 
-| Page | Performance | Accessibility | Best Practices | SEO | Screenshot |
-|------|-------------|---------------|----------------|-----|------------|
-| Home | 96 | 98 | 100 | 100 | [View](docs/lighthouse/desktop-home.png) |
-| Menu | 94 | 98 | 100 | 100 | [View](docs/lighthouse/desktop-menu.png) |
-| About | 95 | 98 | 100 | 100 | [View](docs/lighthouse/desktop-about.png) |
-| Contact | 93 | 98 | 100 | 100 | [View](docs/lighthouse/desktop-contact.png) |
-| Booking | 92 | 98 | 100 | 100 | [View](docs/lighthouse/desktop-booking.png) |
+![screenshot](static/images/Screenshot%202025-10-13%20at%2016.21.14.png)
+
 
 #### Mobile Results
 
-| Page | Performance | Accessibility | Best Practices | SEO | Screenshot |
-|------|-------------|---------------|----------------|-----|------------|
-| Home | 88 | 98 | 100 | 100 | [View](docs/lighthouse/mobile-home.png) |
-| Menu | 86 | 98 | 100 | 100 | [View](docs/lighthouse/mobile-menu.png) |
-| About | 87 | 98 | 100 | 100 | [View](docs/lighthouse/mobile-about.png) |
-| Contact | 85 | 98 | 100 | 100 | [View](docs/lighthouse/mobile-contact.png) |
-| Booking | 84 | 98 | 100 | 100 | [View](docs/lighthouse/mobile-booking.png) |
+![screenshot](static/images/Screenshot%202025-10-13%20at%2016.20.58.png)
+
 
 ### Performance Optimizations Implemented
 
-**Images:**
-
-- Compressed with TinyPNG (80% size reduction)
-- Proper dimensions specified
-- Lazy loading for below-the-fold images
-- Modern formats (WebP) with fallbacks
-
 **CSS:**
-
-- Minified in production
-- Critical CSS inlined (future improvement)
 - Unused CSS removed
 - CSS variables for consistency
 
 **JavaScript:**
 
-- CDN-hosted Bootstrap (cached)
+- CDN-hosted Bootstrap
 - No custom JS (minimal load)
-- Async loading where possible
 
 **Fonts:**
 
@@ -500,8 +466,6 @@ Base: 320px and up
 
 - Gunicorn for production
 - WhiteNoise for static files
-- Gzip compression enabled
-- Browser caching headers
 
 **Database:**
 
@@ -513,17 +477,15 @@ Base: 320px and up
 
 **Average Load Times (Desktop):**
 
-- First Contentful Paint: 0.8s
-- Largest Contentful Paint: 1.2s
-- Time to Interactive: 1.5s
-- Total Blocking Time: 50ms
+- First Contentful Paint: 0.7s
+- Largest Contentful Paint: 0.7s
+- Total Blocking Time: 0ms
 
 **Average Load Times (Mobile):**
 
-- First Contentful Paint: 1.5s
-- Largest Contentful Paint: 2.3s
-- Time to Interactive: 2.8s
-- Total Blocking Time: 120ms
+- First Contentful Paint: 1.8s
+- Largest Contentful Paint: 2.8s
+-
 
 ---
 
@@ -532,37 +494,26 @@ Base: 320px and up
 ### WAVE Accessibility Evaluation
 
 **Tool:** [WAVE Web Accessibility Evaluation Tool](https://wave.webaim.org/)
+![screenshot](static/images/Screenshot%202025-10-13%20at%2016.30.25.png)
 
-| Page | Errors | Alerts | Features | Contrast Errors | Screenshot |
-|------|--------|--------|----------|-----------------|------------|
-| Home | 0 | 0 | 25 | 0 | [View](docs/accessibility/wave-home.png) |
-| Menu | 0 | 0 | 18 | 0 | [View](docs/accessibility/wave-menu.png) |
-| About | 0 | 0 | 15 | 0 | [View](docs/accessibility/wave-about.png) |
-| Contact | 0 | 1 | 20 | 0 | [View](docs/accessibility/wave-contact.png) |
-| Booking | 0 | 0 | 22 | 0 | [View](docs/accessibility/wave-booking.png) |
+The contrast errors ar due to the low contrast between the gold writing and white background, the gold colour was darkened to increase contrast.
 
-**Alert on Contact Page:** Redundant link (phone and email linked twice) - Acceptable design decision for mobile usability.
+The alerts were for skipped heading levels.
 
 ### Accessibility Features Detected
 
-✅ **Structural Elements:** 25 instances
+✅ **Structural Elements:** 
 
 - Proper heading hierarchy (h1 → h2 → h3)
 - Semantic HTML5 elements
 - ARIA landmarks
 
-✅ **Alternative Text:** 15 instances
-
-- All static images have descriptive alt text
-- Decorative images properly marked
-- No user-uploaded or dynamic images in templates yet
-
-✅ **Form Labels:** 45 instances
+✅ **Form Labels:** 
 
 - All inputs associated with labels
 - Clear label text
 
-✅ **Links:** 35 instances
+✅ **Links:** 
 
 - Descriptive link text (no "click here")
 - Keyboard accessible
@@ -572,18 +523,6 @@ Base: 320px and up
 - WCAG AA compliance
 - 4.5:1 minimum ratio for text
 
-### Screen Reader Testing
-
-**Tool:** NVDA (NonVisual Desktop Access)
-
-| Feature | Test | Result |
-|---------|------|--------|
-| Page navigation | Tab through page | All interactive elements accessible | ✅ Pass |
-| Form completion | Complete booking form | All labels read correctly | ✅ Pass |
-| Error messages | Submit invalid form | Errors announced | ✅ Pass |
-| Navigation menu | Navigate site | Links clearly announced | ✅ Pass |
-| Status updates | Login/logout | Success messages read | ✅ Pass |
-| Booking cards | Read booking details | All information accessible | ✅ Pass |
 
 ### Keyboard Navigation Testing
 
@@ -657,7 +596,7 @@ def clean_date(self):
     return booking_date
 ```
 
-**Commit:** `a1b2c3d - Add past date validation to booking form`
+
 
 ---
 
@@ -675,7 +614,7 @@ Bootstrap collapse not triggering on link click.
 **Fix:**  
 Added data-bs-toggle="collapse" data-bs-target to mobile nav links.
 
-**Commit:** `d4e5f6g - Fix mobile navigation auto-close`
+
 
 ---
 
@@ -698,7 +637,7 @@ Template using hardcoded text instead of {{ user.username }}.
 </a>
 ```
 
-**Commit:** `h7i8j9k - Display actual username in navigation`
+
 
 ---
 
@@ -719,7 +658,6 @@ View not passing instance to form.
 form = ReservationForm(request.POST, instance=reservation)
 ```
 
-**Commit:** `l0m1n2o - Fix edit form pre-population`
 
 ---
 
@@ -787,13 +725,13 @@ Add character counter and limit in form.
 
 ### Summary
 
-**Total Tests:** 11 automated + 100+ manual tests  
+**Total Tests:** 10 automated + 100+ manual tests  
 **Pass Rate:** 100%  
 **Code Quality:** PEP 8 compliant, HTML/CSS validated  
 **Accessibility:** WCAG 2.1 AA compliant  
-**Performance:** Lighthouse scores 84-96  
+**Performance:** Lighthouse scores 91+
 **Browser Compatibility:** Tested on 8 browsers  
-**Responsiveness:** Tested on 10+ devices  
+**Responsiveness:** Tested on 3+ devices  
 
 ### Strengths
 
@@ -808,16 +746,12 @@ Add character counter and limit in form.
 ### Areas for Improvement
 
 🔄 Increase automated test coverage to 90%+  
-🔄 Add integration tests for user flows  
-🔄 Implement end-to-end testing (Selenium)  
-🔄 Add performance benchmarks  
-🔄 Test with assistive technologies (JAWS)  
-🔄 Load testing with multiple concurrent users  
+🔄 Test with assistive technologies (JAWS)    
 🔄 Responsive images planned for future updates
 🔄 Email confirmation planned for future updates
 🔄 Professional photography planned for future updates
 
-### Next Testing Phase (Resubmission)
+### Next Testing Phase 
 
 **Planned Tests:**
 
@@ -826,13 +760,10 @@ Add character counter and limit in form.
 - Enhanced calendar widget
 - User profile management
 - Admin dashboard analytics
-- Export functionality
-- Payment integration (if added)
 
 ---
 
 **Last Updated:** October 2025  
-**Tested By:** [Your Name]  
 **Testing Period:** September - October 2025
 
 ---
