@@ -3,6 +3,7 @@ from django.urls import reverse
 from datetime import date, timedelta
 from .models import TimeSlot, Reservation, MenuItem
 
+
 class TimeSlotModelTest(TestCase):
     """Test TimeSlot model"""
     
