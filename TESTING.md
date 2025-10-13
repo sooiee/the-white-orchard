@@ -349,86 +349,13 @@ No custom JavaScript files. All JavaScript functionality provided by Bootstrap 5
 ---
 
 ## BROWSER COMPATIBILITY
-
-### Testing Matrix
-
-| Browser | Version | OS | Status | Issues |
-|---------|---------|----|----|--------|
-| **Google Chrome** | 120.0 | Windows 11 | ✅ Pass | None |
-| **Google Chrome** | 120.0 | macOS 14 | ✅ Pass | None |
-| **Mozilla Firefox** | 121.0 | Windows 11 | ✅ Pass | None |
-| **Mozilla Firefox** | 121.0 | macOS 14 | ✅ Pass | None |
-| **Safari** | 17.1 | macOS 14 | ✅ Pass | Minor date picker styling |
-| **Safari** | 17.1 | iOS 17 | ✅ Pass | None |
-| **Microsoft Edge** | 120.0 | Windows 11 | ✅ Pass | None |
-| **Samsung Internet** | 23.0 | Android 13 | ✅ Pass | None |
-
-### Browser-Specific Notes
-
-**Safari (Desktop):**
-
-- Native date picker has different styling
-- All functionality works correctly
-- CSS variables fully supported
-
-**Safari (iOS):**
-
-- Touch interactions work smoothly
-- Form inputs render correctly
-- Dropdown menus function properly
-
-**Firefox:**
-
-- CSS Grid and Flexbox render perfectly
-- No console errors
-- Font rendering excellent
-
-**Edge:**
-
-- Chromium-based, identical to Chrome
-- No compatibility issues
-
-**Samsung Internet:**
-
-- Tested on Galaxy S22
-- All features functional
-- Good performance
-
-### Features Tested Per Browser
-
-- ✅ Page loading and rendering
-- ✅ Navigation (desktop and mobile)
-- ✅ Form submission
-- ✅ Form validation
-- ✅ Date picker functionality
-- ✅ Dropdown menus
-- ✅ Modal dialogs
-- ✅ Responsive layout
-- ✅ Image loading
-- ✅ CSS animations and transitions
-- ✅ JavaScript interactions (Bootstrap)
-
----
+Browser compatability tested used PowerMapper ~ No compatiblity issues detected.
+![powermapperscreenshot](static/images/Screenshot%202025-10-13%20at%2015.47.37.png)
 
 ## RESPONSIVENESS
 
 ### Devices Tested
 
-| Device | Screen Size | Browser | Status | Screenshot |
-|--------|-------------|---------|--------|------------|
-| **Desktop** |
-| Desktop PC | 1920x1080 | Chrome | ✅ Pass | [View](docs/responsive/desktop-1920.png) |
-| Desktop PC | 1366x768 | Firefox | ✅ Pass | [View](docs/responsive/desktop-1366.png) |
-| MacBook Pro | 2560x1600 | Safari | ✅ Pass | [View](docs/responsive/macbook.png) |
-| **Tablet** |
-| iPad Pro | 1024x1366 | Safari | ✅ Pass | [View](docs/responsive/ipad-pro.png) |
-| iPad Air | 820x1180 | Safari | ✅ Pass | [View](docs/responsive/ipad-air.png) |
-| Surface Pro | 912x1368 | Edge | ✅ Pass | [View](docs/responsive/surface.png) |
-| **Mobile** |
-| iPhone 14 Pro | 393x852 | Safari | ✅ Pass | [View](docs/responsive/iphone14.png) |
-| iPhone SE | 375x667 | Safari | ✅ Pass | [View](docs/responsive/iphone-se.png) |
-| Samsung S22 | 360x800 | Chrome | ✅ Pass | [View](docs/responsive/samsung-s22.png) |
-| Pixel 7 | 412x915 | Chrome | ✅ Pass | [View](docs/responsive/pixel7.png) |
 
 ### Responsive Design Testing Tools
 
@@ -436,7 +363,6 @@ No custom JavaScript files. All JavaScript functionality provided by Bootstrap 5
 
 - Tested all standard device presets
 - Custom breakpoints tested (320px to 2560px)
-- Network throttling tested (Fast 3G, Slow 3G)
 
 **Firefox Responsive Design Mode:**
 

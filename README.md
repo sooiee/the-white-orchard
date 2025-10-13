@@ -805,3 +805,7 @@ This project has been submitted for feedback. Based on assessor feedback, the fo
 ---
 
 *This project was created as part of the Code Institute Full Stack Software Development Diploma.*
+
+### AI Assistance
+
+Portions of this project were generated, modified, or reviewed using AI tools (GitHub Copilot). AI was also used to help draft user stories and generate git commit messages for improved clarity and consistency.
