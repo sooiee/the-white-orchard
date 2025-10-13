@@ -115,4 +115,3 @@ class FormTest(TestCase):
         response = self.client.post(reverse('create_reservation'), data=form_data)
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, 'Cannot book a date in the past')
-        
