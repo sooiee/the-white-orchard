@@ -1,32 +1,10 @@
 from django import forms
-from .models import Reservation
+from .models import Reservation, Enquiry
 from datetime import date
-from django.db.models import Sum
 
-def clean(self):
-    cleaned_data = super().clean()
-    booking_date = cleaned_data.get('date')
-    time_slot = cleaned_data.get('time_slot')
-    num_guests = cleaned_data.get('number_of_guests')
-    
-    if booking_date and time_slot and num_guests:
-        existing = Reservation.objects.filter(
-            date=booking_date,
-            time_slot=time_slot,
-            status__in=['pending', 'confirmed']
-        ).aggregate(total=Sum('number_of_guests'))['total'] or 0
-        
-        remaining = 50 - existing
-        
-        if num_guests > remaining:
-            raise forms.ValidationError(
-                f'Only {remaining} seats available for this time slot.'
-            )
-    
-    return cleaned_data
 
 class ReservationForm(forms.ModelForm):
-    """Form for creating reservations"""
+    """Form for creating and editing reservations"""
     
     class Meta:
         model = Reservation
@@ -67,4 +45,17 @@ class ReservationForm(forms.ModelForm):
             raise forms.ValidationError("Cannot book a date in the past.")
         
         return booking_date
-    
+
+
+class EnquiryForm(forms.ModelForm):
+    """Contact enquiry form"""
+    class Meta:
+        model = Enquiry
+        fields = ['name', 'email', 'phone', 'subject', 'message']
+        widgets = {
+            'name': forms.TextInput(attrs={'class': 'form-control'}),
+            'email': forms.EmailInput(attrs={'class': 'form-control'}),
+            'phone': forms.TextInput(attrs={'class': 'form-control'}),
+            'subject': forms.TextInput(attrs={'class': 'form-control'}),
+            'message': forms.Textarea(attrs={'class': 'form-control', 'rows': 5}),
+        }
