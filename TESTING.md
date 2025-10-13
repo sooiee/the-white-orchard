@@ -24,10 +24,10 @@ This document contains comprehensive testing information for The White Orchard a
 
 ### Test Suite Overview
 
-**Total Tests:** 11  
+**Total Tests:** 10 
 **Status:** ✅ All Passing  
-**Coverage:** 85%+  
-**Framework:** Django TestCase  
+**Coverage:** 85%+ (as of October 2025)
+**Framework:** Django
 
 ### Running Tests
 
@@ -123,7 +123,7 @@ def test_past_date_validation(self):
 **Planned for Resubmission:**
 
 - Authentication tests (login, register, logout)
-- Authorization tests (user can only edit own bookings)
+- Authorisation tests (user can only edit own bookings)
 - Capacity limit tests (50 guests per slot)
 - Enquiry form tests
 - Edit/Delete reservation tests
@@ -155,7 +155,7 @@ All features tested manually across multiple devices and browsers. Tests repeate
 | **Logout** |
 | Logout | Click logout in dropdown | Logged out, success message | Session ended, message shown | ✅ Pass |
 
-![Authentication Testing](docs/testing/authentication.png)
+
 
 #### Booking System
 
@@ -176,13 +176,13 @@ All features tested manually across multiple devices and browsers. Tests repeate
 | Edit future booking | Click edit, modify details | Changes saved | Reservation updated successfully | ✅ Pass |
 | Edit past booking | Try to edit past date | Edit button disabled | "Cannot modify past booking" | ✅ Pass |
 | Edit cancelled booking | Try to edit cancelled booking | Edit button disabled | Button not shown | ✅ Pass |
-| Authorization | Try to edit another user's booking | Access denied | Redirected, error message | ✅ Pass |
+| Authorisation | Try to edit another user's booking | Access denied | Redirected, error message | ✅ Pass |
 | **Cancel Booking** |
 | Cancel future booking | Click cancel, confirm | Status changed to cancelled | Booking marked as cancelled | ✅ Pass |
 | Cancel confirmation | Click cancel | Confirmation page shown | Details displayed, confirm/keep options | ✅ Pass |
 | Cancel past booking | Try to cancel past booking | Cancel button disabled | Button not shown | ✅ Pass |
 
-![Booking Testing](docs/testing/bookings.png)
+
 
 #### Navigation
 
@@ -272,27 +272,21 @@ All features tested manually across multiple devices and browsers. Tests repeate
 
 | Page | Result | Errors | Warnings | Screenshot |
 |------|--------|--------|----------|------------|
-| Home | ✅ Pass | 0 | 0 | [View](docs/validation/html-home.png) |
-| Menu | ✅ Pass | 0 | 0 | [View](docs/validation/html-menu.png) |
-| About | ✅ Pass | 0 | 0 | [View](docs/validation/html-about.png) |
-| Contact | ✅ Pass | 0 | 0 | [View](docs/validation/html-contact.png) |
-| Booking Form | ✅ Pass | 0 | 0 | [View](docs/validation/html-booking.png) |
-| My Bookings | ✅ Pass | 0 | 0 | [View](docs/validation/html-mybookings.png) |
-| Login | ✅ Pass | 0 | 0 | [View](docs/validation/html-login.png) |
-| Register | ✅ Pass | 0 | 0 | [View](docs/validation/html-register.png) |
+| Home | ✅ Pass | 0 | 1 | [View](static/images/Screenshot%202025-10-13%20at%2014.48.17.png) |
+| Menu | ✅ Pass | 0 | 1 | |
+| About | ✅ Pass | 0 | 1 ||
+| Contact | ✅ Pass | 0 | 1 |  |
+| Booking Form | ✅ Pass | 0 | 1 |  |
+| My Bookings | ✅ Pass | 0 | 1 |  |
+| Login | ✅ Pass | 0 | 1 | |
+| Register | ✅ Pass | 0 | 1 |  |
 
-**Validation Method:**
+**Validation Notes:**
+- Each page shows 1 warning for missing `lang` attribute on the `<html>` start tag. This can be added for improved accessibility.
+- Any errors reported during validation are due to Django template tags (`{% ... %}` and `{{ ... }}`) and do not appear in the final rendered HTML.
+- See the Home page screenshot for an example of the warning.
+ All rendered pages have been validated and pass W3C HTML validation.
 
-- Validated via direct input (copy source code)
-- Checked while logged in and logged out
-- Django template tags do not affect validation
-
-**Common Issues Fixed:**
-
-- Removed duplicate IDs
-- Added alt attributes to all images
-- Ensured proper nesting of elements
-- Fixed unclosed tags
 
 ### CSS Validation
 
@@ -300,7 +294,7 @@ All features tested manually across multiple devices and browsers. Tests repeate
 
 | File | Result | Errors | Warnings | Screenshot |
 |------|--------|--------|----------|------------|
-| style.css | ✅ Pass | 0 | 0 | [View](docs/validation/css-validation.png) |
+| style.css | ✅ Pass | 0 | 3 | [View](static/images/Screenshot%202025-10-13%20at%2015.01.58.png) |
 
 **Validation Details:**
 
@@ -309,10 +303,10 @@ All features tested manually across multiple devices and browsers. Tests repeate
 - No vendor prefix errors
 - Media queries validated
 
-**Warnings Ignored:**
+**Warnings:**
 
-- Vendor extensions (-webkit-, -moz-) - Required for cross-browser compatibility
-- CSS variables may not be recognized by older validators but are valid CSS3
+- `.btn-outline-secondary:hover` and `.btn-outline-danger:hover` use the same color for `background-color` and `border-color` (lines 146, 161). This is intentional for visual consistency.
+- The `clip` property (line 479) is deprecated but used for accessibility in the `.sr-only` class. Modern browsers support `clip-path` as a replacement.
 
 ### Python Validation
 
@@ -633,8 +627,9 @@ Base: 320px and up
 
 ✅ **Alternative Text:** 15 instances
 
-- All images have descriptive alt text
+- All static images have descriptive alt text
 - Decorative images properly marked
+- No user-uploaded or dynamic images in templates yet
 
 ✅ **Form Labels:** 45 instances
 
@@ -678,6 +673,8 @@ Base: 320px and up
 
 ### Color Contrast Testing
 
+**Note:** Color contrast ratios and WCAG AA compliance reflect the October 2025 accessibility update.
+
 **Tool:** WebAIM Contrast Checker
 
 | Element | Foreground | Background | Ratio | WCAG Level | Result |
@@ -689,22 +686,16 @@ Base: 320px and up
 | Badges | #FFFFFF | #28a745 | 4.6:1 | AA | ✅ Pass |
 
 ### Accessibility Compliance Checklist
-
 - ✅ Semantic HTML throughout
 - ✅ ARIA labels where needed
 - ✅ Keyboard navigation support
 - ✅ Focus visible on all interactive elements
-- ✅ Alt text on all images
-- ✅ Form labels properly associated
+- ✅ Alt text on all static images
+- ✅ Form labels properly associated and ARIA attributes for required fields
 - ✅ Error messages clear and descriptive
 - ✅ Color not sole means of conveying information
-- ✅ Sufficient color contrast
-- ✅ Responsive and mobile-friendly
-- ✅ Skip to main content link
-- ✅ Language declared in HTML
-- ✅ Page titles descriptive
-- ✅ Heading hierarchy logical
-- ✅ Link text descriptive
+- ✅ Sufficient color contrast (WCAG AA)
+- ✅ Highly readable fonts (Montserrat)
 
 ---
 
@@ -896,6 +887,9 @@ Add character counter and limit in form.
 🔄 Add performance benchmarks  
 🔄 Test with assistive technologies (JAWS)  
 🔄 Load testing with multiple concurrent users  
+🔄 Responsive images planned for future updates
+🔄 Email confirmation planned for future updates
+🔄 Professional photography planned for future updates
 
 ### Next Testing Phase (Resubmission)
 
@@ -911,9 +905,9 @@ Add character counter and limit in form.
 
 ---
 
-**Last Updated:** January 2025  
+**Last Updated:** October 2025  
 **Tested By:** [Your Name]  
-**Testing Period:** December 2024 - January 2025
+**Testing Period:** September - October 2025
 
 ---
 

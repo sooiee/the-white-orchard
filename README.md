@@ -165,7 +165,7 @@ Wireframes were created for mobile, tablet, and desktop views:
 - Weights: 300 (Light), 400 (Regular), 500 (Medium), 600 (Semi-Bold)
 - Clean, modern, and highly legible
 - Works well at all sizes from small form labels to larger paragraphs
-- Excellent accessibility score for dyslexia-friendly design
+- Excellent accessibility score for readable design
 
 **Font Pairing Rationale:**
 
@@ -223,7 +223,7 @@ All color combinations meet WCAG 2.1 Level AA standards:
 - **About Section**: Images of the venue interior showcasing the elegant atmosphere
 - **Icons**: Custom SVG icons for features section (consistent with brand aesthetic)
 
-- Professional photography would be commissioned
+- Professional photography planned for future updates
 - Images would showcase actual menu items and venue
 - Customer consent obtained for any testimonial photos
 
@@ -231,8 +231,7 @@ All color combinations meet WCAG 2.1 Level AA standards:
 
 - All images compressed using TinyPNG/Squoosh
 - WebP format for modern browsers with fallbacks
-- Alt text provided for all images (accessibility)
-
+- Alt text provided for all static images (accessibility). No user-uploaded or dynamic images in templates yet.
 
 ---
 
@@ -263,7 +262,7 @@ All color combinations meet WCAG 2.1 Level AA standards:
 - Confirmation message displayed
 - Redirects to home page
 
-![Authentication Features](docs/features/authentication.png)
+![Authentication Features]()
 
 #### Booking Management
 
@@ -275,7 +274,7 @@ All color combinations meet WCAG 2.1 Level AA standards:
 - Guest count validation (1-8 people)
 - Special requests text area (dietary requirements, celebrations)
 - Form validation with helpful error messages
-- Email confirmation sent (future: actual emails)
+- Email confirmation planned for future updates
 
 **View Bookings** (US07)
 
@@ -291,7 +290,7 @@ All color combinations meet WCAG 2.1 Level AA standards:
 - Only available for future bookings
 - Pre-populated form with existing details
 - Same validation as create form
-- Authorization check (users can only edit own bookings)
+- Authorisation check (users can only edit own bookings)
 - Success message after update
 - Prevents editing past or cancelled bookings
 
@@ -304,7 +303,7 @@ All color combinations meet WCAG 2.1 Level AA standards:
 - Updates status to "cancelled" (soft delete)
 - Success message after cancellation
 
-![Booking Management](docs/features/bookings.png)
+![Booking Management]()
 
 #### Menu Display (US02)
 
@@ -343,7 +342,7 @@ All color combinations meet WCAG 2.1 Level AA standards:
 
 **Desktop Navigation:**
 
-- Sticky navigation bar with brand logo
+- Navigation bar with brand logo
 - Home, Menu, About, Contact links
 - Conditional display based on authentication:
   - **Logged Out**: Login and Register links
@@ -363,7 +362,7 @@ All color combinations meet WCAG 2.1 Level AA standards:
 - Touch-friendly tap targets
 - Smooth collapse/expand animation
 
-![Navigation](docs/features/navigation.png)
+![Navigation]()
 
 ### FOOTER
 
@@ -378,7 +377,7 @@ All color combinations meet WCAG 2.1 Level AA standards:
 
 ### FUTURE IMPLEMENTATIONS
 
-**For Resubmission (Priority Order):**
+**(Priority Order):**
 
 1. **Real-Time Capacity Checking** (High Priority)
    - Track guest count per time slot
@@ -425,7 +424,7 @@ All color combinations meet WCAG 2.1 Level AA standards:
    - Track voucher usage
 
 ### ACCESSIBILITY
-Accessibility has been a core consideration throughout development.
+
 
 **October 2025 Contact Form Update:**
 - The contact enquiry form now uses associated labels and ARIA attributes (`aria-required`) for all required fields, improving screen reader and keyboard accessibility.
@@ -467,11 +466,6 @@ Accessibility has been a core consideration throughout development.
 - Status badges use icons in addition to color
 - Never rely on color alone for information
 
-**Responsive Images**
-
-- Alt text on all images
-- Decorative images marked with empty alt=""
-- Responsive images with srcset
 
 **Forms**
 
@@ -482,14 +476,14 @@ Accessibility has been a core consideration throughout development.
 
 **Font Choices**
 
-- Dyslexia-friendly fonts (Montserrat)
+- Highly readable fonts (Montserrat)
 - Adequate line height (1.6)
 - Readable font sizes (minimum 16px body)
 
 **Testing**
 
 - WAVE accessibility evaluation
-- Lighthouse accessibility score: 98+
+- Lighthouse accessibility score: 98+ (last tested October 2025)
 - Screen reader testing (NVDA)
 - Keyboard-only navigation testing
 
@@ -552,15 +546,12 @@ Accessibility has been a core consideration throughout development.
 
 **Design Tools:**
 
-- **Balsamiq** - Wireframes
-- **Coolors** - Color palette generation
+- **Canva** - Wireframes
 - **Favicon.io** - Favicon creation
 - **TinyPNG** - Image compression
 
 **Testing Tools:**
 
-- **Django TestCase** - Unit testing
-- **Coverage.py** - Test coverage reporting
 - **W3C Markup Validator** - HTML validation
 - **W3C CSS Validator** - CSS validation
 - **PEP8** - Python code style checking
@@ -577,9 +568,9 @@ Comprehensive testing documentation is available in [TESTING.md](TESTING.md)
 
 **Automated Tests:**
 
-- 11 unit tests covering models, views, and forms
-- All tests passing ✅
-- Test coverage: 85%+
+- 10 unit tests covering models, views, and forms
+- All tests passing as of October 2025
+- Test coverage: 85%+ (see TESTING.md for details)
 
 **Manual Testing:**
 
@@ -595,7 +586,6 @@ Comprehensive testing documentation is available in [TESTING.md](TESTING.md)
 - HTML: W3C validated - No errors
 - CSS: W3C validated - No errors
 - Python: PEP8 compliant
-- JavaScript: No console errors
 
 **Performance:**
 
@@ -604,7 +594,7 @@ Comprehensive testing documentation is available in [TESTING.md](TESTING.md)
 - Lighthouse Best Practices Score: 95+
 - Lighthouse SEO Score: 100
 
-See [TESTING.md](TESTING.md) for full testing documentation with screenshots and detailed results.
+See [TESTING.md](TESTING.md) for full testing documentation and detailed results.
 
 ---
 
@@ -776,40 +766,31 @@ heroku logs --tail
 
 ### MEDIA
 
-**Note:** This is an educational project using placeholder images.
-
-- **Placeholder Images** - via.placeholder.com
 - **Icons** - Unicode emojis and Bootstrap icons
 - **Fonts** - Google Fonts (Playfair Display & Montserrat)
 
 **In Production:**
 
-- Professional photography would be commissioned
+- Professional photography planned for future updates
 - Original images of venue and food items
 - Licensed stock photos from Unsplash/Pexels if needed
 
 ### ACKNOWLEDGMENTS
 
 - **Code Institute** - Project brief, learning materials, and assessment criteria
-- **My Mentor** - [Mentor Name] for guidance, feedback, and support throughout the project
+- **My Mentor** - Marko for guidance, feedback, and support throughout the project
 - **Tutor Support** - For assistance with deployment issues and database queries
-- **Code Institute Slack Community** - Peer code reviews and troubleshooting help
+- **Code Institute Discord Community** - Peer code reviews and troubleshooting help
 - **Django Community** - Excellent documentation and community support
-- **My Family** - For patience during long coding sessions and testing assistance
 
-**Special Thanks:**
-
-- Fellow students who provided feedback on UI/UX
-- Accessibility community for guidance on ARIA implementation
-- Beta testers who helped identify bugs before submission
 
 ---
 
 ## PROJECT STATUS
 
-**Current Version:** 1.0 - Initial Submission
+**Current Version:** Initial Submission
 
-This project has been submitted for initial feedback. Based on assessor feedback, the following enhancements are planned for resubmission:
+This project has been submitted for feedback. Based on assessor feedback, the following enhancements are planned for resubmission:
 
 - Real-time capacity checking system
 - Interactive calendar widget
@@ -817,23 +798,9 @@ This project has been submitted for initial feedback. Based on assessor feedback
 - Enhanced test coverage
 - Additional user features
 
-**Development Timeline:**
-
-- Week 1-2: Planning, design, and database schema
-- Week 3-4: Core functionality (booking system, menu)
-- Week 5: Authentication and user management
-- Week 6: Testing, documentation, and deployment
-- Week 7-8: Polish, accessibility improvements, final testing
-
 ---
 
-**Last Updated:** January 2025
-
-**Developer:** [Your Name]  
-**GitHub:** [@yourusername](https://github.com/yourusername)  
-**Email:** your.email@example.com
-
-**Project Repository:** [github.com/yourusername/white-orchard](https://github.com/yourusername/white-orchard)
+**Project Repository:** [the-white-orchard repository](https://github.com/sooiee/the-white-orchard)
 
 ---
 
