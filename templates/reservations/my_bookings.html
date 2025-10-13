@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block title %}My Bookings - The White Orchard{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <h1 class="mb-4 page-title">My Bookings</h1>
+    
+    {% if reservations %}
+        <div class="row">
+            {% for reservation in reservations %}
+            <div class="col-md-6 mb-4">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-start mb-3">
+                            <h5 class="card-title mb-0 text-gold">
+                                {{ reservation.date|date:"l, F j, Y" }}
+                            </h5>
+                            <span class="badge bg-{% if reservation.status == 'confirmed' %}success{% elif reservation.status == 'cancelled' %}danger{% else %}warning{% endif %}">
+                                {{ reservation.get_status_display }}
+                            </span>
+                        </div>
+                        
+                        <p class="mb-2"><strong>Time:</strong> {{ reservation.time_slot }}</p>
+                        <p class="mb-2"><strong>Guests:</strong> {{ reservation.number_of_guests }}</p>
+                        {% if reservation.special_requests %}
+                            <p class="mb-2"><strong>Special Requests:</strong> {{ reservation.special_requests }}</p>
+                        {% endif %}
+                        <p class="mb-3 text-muted small">Booked on: {{ reservation.created_at|date:"M j, Y" }}</p>
+                        
+                        {% if reservation.can_be_modified %}
+                            <div class="btn-group w-100">
+                                <a href="{% url 'edit_reservation' reservation.pk %}" class="btn btn-outline-secondary">
+                                    Edit
+                                </a>
+                                <a href="{% url 'cancel_reservation' reservation.pk %}" class="btn btn-outline-danger">
+                                    Cancel
+                                </a>
+                            </div>
+                        {% elif reservation.status == 'cancelled' %}
+                            <p class="text-danger mb-0">This booking has been cancelled</p>
+                        {% else %}
+                            <p class="text-muted mb-0">This booking cannot be modified</p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="text-center py-5">
+            <div style="font-size: 4rem; margin-bottom: 1rem;">📅</div>
+            <h3 class="text-medium">No bookings yet</h3>
+            <p class="text-muted mb-4">You haven't made any reservations yet.</p>
+            <a href="{% url 'create_reservation' %}" class="btn btn-primary btn-lg">Make Your First Booking</a>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}
