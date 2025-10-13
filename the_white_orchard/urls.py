@@ -5,6 +5,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('pages.urls')),
     path('reservations/', include('reservations.urls')),
+    path('accounts/', include('accounts.urls')),
 ]
 
 handler404 = 'django.views.defaults.page_not_found'
