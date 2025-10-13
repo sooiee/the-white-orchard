@@ -45,7 +45,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'white_orchard.urls'
+ROOT_URLCONF = 'the_white_orchard.urls'
 
 TEMPLATES = [
     {
@@ -63,7 +63,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'white_orchard.wsgi.application'
+WSGI_APPLICATION = 'the_white_orchard.wsgi.application'
 
 
 # Database

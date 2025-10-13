@@ -1,5 +1,7 @@
 from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator
+from datetime import date
+
 
 class TimeSlot(models.Model):
     """Available booking time slots"""
@@ -15,6 +17,9 @@ class TimeSlot(models.Model):
     
     def __str__(self):
         return dict(self.SLOT_CHOICES)[self.time]
+    
+    class Meta:
+        ordering = ['time']
 
 
 class Reservation(models.Model):
@@ -47,6 +52,14 @@ class Reservation(models.Model):
     
     def __str__(self):
         return f"{self.customer_name} - {self.date}"
+    
+    def can_be_modified(self):
+        """Check if reservation can be modified (future date, not cancelled)"""
+        return self.date >= date.today() and self.status != 'cancelled'
+    
+    def can_be_cancelled(self):
+        """Check if reservation can be cancelled (future date, not cancelled)"""
+        return self.date >= date.today() and self.status != 'cancelled'
 
 
 class MenuItem(models.Model):
@@ -61,4 +74,22 @@ class MenuItem(models.Model):
     
     def __str__(self):
         return self.name
+
+
+class Enquiry(models.Model):
+    """Customer enquiries and contact messages"""
+    name = models.CharField(max_length=100)
+    email = models.EmailField()
+    phone = models.CharField(max_length=20, blank=True)
+    subject = models.CharField(max_length=200)
+    message = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    is_responded = models.BooleanField(default=False)
+    admin_notes = models.TextField(blank=True)
     
+    class Meta:
+        ordering = ['-created_at']
+        verbose_name_plural = 'Enquiries'
+    
+    def __str__(self):
+        return f"{self.name} - {self.subject}"
