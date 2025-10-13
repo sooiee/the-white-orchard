@@ -4,7 +4,7 @@
 
 An elegant Django web application for managing afternoon tea reservations at The White Orchard. This full-stack project features a sophisticated booking system, user authentication, comprehensive CRUD operations, and an intuitive admin dashboard designed for both customers and staff.
 
-**Live Site:** [The White Orchard on Heroku](https://the-white-orchard-sooiee-b65625377ac7.herokuapp.com/)
+**Live Site on Heroku:** [The White Orchard](https://the-white-orchard-sooiee-b65625377ac7.herokuapp.com/)
 
 ---
 
