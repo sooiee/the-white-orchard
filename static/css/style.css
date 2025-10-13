@@ -1,46 +1,111 @@
-/* The White Orchard - Main Stylesheet */
-
-/* Color Variables */
+/* ===================================
+   CUSTOM CSS VARIABLES
+   =================================== */
 :root {
     --cream: #FAF9F6;
+    --cream-light: #FFFEF9;
     --pink: #FFD6E8;
     --pink-dark: #FFC1D5;
+    --pink-darker: #FFB3C6;
     --gold: #D4AF37;
+    --gold-dark: #B8941F;
     --text-dark: #4A4A4A;
-    --text-light: #6B6B6B;
+    --text-medium: #6B6B6B;
+    --white: #FFFFFF;
+    --success: #28a745;
+    --danger: #dc3545;
+    --warning: #ffc107;
 }
 
-/* Base Styles */
+/* ===================================
+   BASE STYLES
+   =================================== */
 body {
     font-family: 'Montserrat', sans-serif;
-    background: var(--cream);
-    color: var(--text-dark);
+    background-color: var(--cream);
+    color: var(--text-medium);
+    line-height: 1.6;
 }
 
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Playfair Display', serif;
+    color: var(--text-dark);
 }
 
-/* Navigation */
+.page-title {
+    font-family: 'Playfair Display', serif;
+    color: var(--gold);
+    margin-bottom: 2rem;
+}
+
+/* ===================================
+   NAVIGATION
+   =================================== */
+.navbar {
+    background-color: var(--white) !important;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
 .navbar-brand {
     color: var(--gold) !important;
     font-family: 'Playfair Display', serif;
     font-size: 1.8rem;
     font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.navbar-brand:hover {
+    color: var(--gold-dark) !important;
 }
 
 .nav-link {
     color: var(--text-dark) !important;
     font-weight: 500;
     margin: 0 0.5rem;
-    transition: color 0.3s ease;
+    transition: all 0.3s ease;
+    position: relative;
 }
 
 .nav-link:hover {
     color: var(--gold) !important;
 }
 
-/* Buttons */
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 50%;
+    background-color: var(--gold);
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.nav-link:hover::after {
+    width: 80%;
+}
+
+/* Dropdown styling */
+.dropdown-menu {
+    border: 2px solid var(--pink);
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.dropdown-item {
+    color: var(--text-dark);
+    transition: all 0.3s ease;
+}
+
+.dropdown-item:hover {
+    background-color: var(--pink);
+    color: var(--text-dark);
+}
+
+/* ===================================
+   BUTTONS
+   =================================== */
 .btn-primary {
     background: linear-gradient(135deg, var(--pink) 0%, var(--pink-dark) 100%);
     border: 2px solid var(--gold);
@@ -49,83 +114,400 @@ h1, h2, h3, h4, h5, h6 {
     border-radius: 50px;
     padding: 0.5rem 1.5rem;
     transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
 .btn-primary:hover {
     background: var(--pink-dark);
-    border-color: var(--gold);
+    border-color: var(--gold-dark);
     color: var(--text-dark);
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+.btn-primary:focus,
+.btn-primary:active {
+    background: var(--pink-darker);
+    border-color: var(--gold);
+    color: var(--text-dark);
+    box-shadow: 0 0 0 0.2rem rgba(255, 214, 232, 0.5);
 }
 
 .btn-outline-secondary {
     border: 2px solid var(--gold);
     color: var(--text-dark);
     border-radius: 50px;
+    font-weight: 600;
+    padding: 0.5rem 1.5rem;
     transition: all 0.3s ease;
 }
 
 .btn-outline-secondary:hover {
-    background: var(--gold);
-    color: white;
+    background-color: var(--gold);
+    border-color: var(--gold);
+    color: var(--white);
+    transform: translateY(-2px);
 }
 
-/* Cards */
+.btn-outline-danger {
+    border: 2px solid var(--danger);
+    color: var(--danger);
+    border-radius: 50px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-outline-danger:hover {
+    background-color: var(--danger);
+    border-color: var(--danger);
+    color: var(--white);
+}
+
+.btn-danger {
+    background-color: var(--danger);
+    border: 2px solid var(--danger);
+    color: var(--white);
+    border-radius: 50px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+    border-color: #bd2130;
+    transform: translateY(-2px);
+}
+
+/* ===================================
+   CARDS
+   =================================== */
 .card {
     border: none;
     border-radius: 15px;
-    transition: transform 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
 }
 
 .card:hover {
+    box-shadow: 0 8px 16px rgba(0,0,0,0.15);
     transform: translateY(-5px);
 }
 
-/* Hero Section */
+.card-body {
+    padding: 2rem;
+}
+
+.card-title {
+    font-family: 'Playfair Display', serif;
+    color: var(--gold);
+    margin-bottom: 1rem;
+}
+
+/* ===================================
+   FORMS
+   =================================== */
+.form-control,
+.form-select {
+    border: 2px solid var(--pink);
+    border-radius: 10px;
+    padding: 0.75rem;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--gold);
+    box-shadow: 0 0 0 0.2rem rgba(212, 175, 55, 0.25);
+}
+
+.form-label {
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 0.5rem;
+}
+
+.form-text {
+    color: var(--text-medium);
+    font-size: 0.875rem;
+}
+
+/* ===================================
+   ALERTS & MESSAGES
+   =================================== */
+.alert {
+    border-radius: 10px;
+    border: none;
+    padding: 1rem 1.5rem;
+}
+
+.alert-success {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.alert-danger {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.alert-warning {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+.alert-info {
+    background-color: #d1ecf1;
+    color: #0c5460;
+}
+
+/* ===================================
+   BADGES
+   =================================== */
+.badge {
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.875rem;
+}
+
+.bg-success {
+    background-color: var(--success) !important;
+}
+
+.bg-warning {
+    background-color: var(--warning) !important;
+}
+
+.bg-danger {
+    background-color: var(--danger) !important;
+}
+
+/* ===================================
+   HERO SECTION
+   =================================== */
 .hero-section {
-    background: linear-gradient(135deg, #FAF9F6 0%, #FFE5EE 100%);
+    background: linear-gradient(135deg, var(--cream) 0%, #FFE5EE 100%);
     min-height: 70vh;
     display: flex;
     align-items: center;
+    padding: 4rem 0;
 }
 
 .hero-title {
     font-size: 4rem;
     color: var(--gold);
     font-family: 'Playfair Display', serif;
+    margin-bottom: 1.5rem;
 }
 
 .hero-subtitle {
     font-size: 1.5rem;
-    color: var(--text-light);
+    color: var(--text-medium);
     margin: 2rem 0;
 }
 
-/* Page Titles */
-.page-title {
+.hero-description {
+    font-size: 1.1rem;
+    color: var(--text-medium);
+    max-width: 600px;
+    margin: 0 auto 3rem;
+}
+
+/* ===================================
+   FEATURES SECTION
+   =================================== */
+.feature-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.feature-title {
     font-family: 'Playfair Display', serif;
+    color: var(--gold);
+    margin-bottom: 1rem;
+}
+
+.feature-description {
+    color: var(--text-medium);
+}
+
+/* ===================================
+   BOOKING CARDS
+   =================================== */
+.booking-card {
+    background: var(--white);
+    border-radius: 15px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    margin-bottom: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.booking-card:hover {
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+.booking-date {
+    font-family: 'Playfair Display', serif;
+    color: var(--gold);
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+}
+
+/* ===================================
+   TABLES
+   =================================== */
+.table {
+    background-color: var(--white);
+}
+
+.table thead {
+    background-color: #FFE5EE;
+}
+
+.table-hover tbody tr:hover {
+    background-color: var(--cream);
+}
+
+/* ===================================
+   FOOTER
+   =================================== */
+footer {
+    background-color: var(--text-dark);
+    color: var(--cream);
+    padding: 2rem 0;
+    margin-top: 4rem;
+}
+
+footer a {
+    color: var(--gold);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: var(--gold-dark);
+}
+
+/* ===================================
+   RESPONSIVE DESIGN
+   =================================== */
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.2rem;
+    }
+    
+    .hero-description {
+        font-size: 1rem;
+    }
+    
+    .navbar-brand {
+        font-size: 1.4rem;
+    }
+    
+    .card-body {
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero-title {
+        font-size: 2rem;
+    }
+    
+    .btn-lg {
+        font-size: 1rem;
+        padding: 0.5rem 1rem;
+    }
+}
+
+/* ===================================
+   UTILITY CLASSES
+   =================================== */
+.text-gold {
     color: var(--gold);
 }
 
-/* Form Labels */
-.form-label {
-    font-weight: 600;
-    color: var(--text-dark);
+.bg-cream {
+    background-color: var(--cream);
 }
 
-/* Alert Styling */
-.alert-info {
-    background-color: #E8F4F8;
-    border-color: var(--gold);
+.bg-pink-light {
+    background-color: #FFE5EE;
 }
 
-/* Table Styling */
-.table thead {
-    background: #FFE5EE;
+.shadow-sm {
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
 }
 
-.badge {
-    padding: 0.5rem 1rem;
-    border-radius: 50px;
+.shadow-lg {
+    box-shadow: 0 8px 16px rgba(0,0,0,0.15) !important;
+}
+
+/* ===================================
+   ANIMATIONS
+   =================================== */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.6s ease-in-out;
+}
+
+/* ===================================
+   ACCESSIBILITY
+   =================================== */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+/* Focus styles for keyboard navigation */
+a:focus,
+button:focus,
+input:focus,
+select:focus,
+textarea:focus {
+    outline: 3px solid var(--gold);
+    outline-offset: 2px;
+}
+
+/* ===================================
+   PRINT STYLES
+   =================================== */
+@media print {
+    .navbar,
+    .btn,
+    footer {
+        display: none;
+    }
+    
+    body {
+        background-color: white;
+        color: black;
+    }
+    
+    .card {
+        box-shadow: none;
+        border: 1px solid #ddd;
+    }
 }
