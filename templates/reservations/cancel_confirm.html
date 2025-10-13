@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block title %}Cancel Reservation - The White Orchard{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-lg">
+                <div class="card-body p-5 text-center">
+                    <div class="mb-4">
+                        <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="#dc3545" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="15" y1="9" x2="9" y2="15"></line>
+                            <line x1="9" y1="9" x2="15" y2="15"></line>
+                        </svg>
+                    </div>
+                    
+                    <h2 class="mb-3 page-title">
+                        Cancel Reservation?
+                    </h2>
+                    
+                    <p class="lead text-muted mb-4">
+                        Are you sure you want to cancel this booking?
+                    </p>
+                    
+                    <div class="text-start p-4 mb-4 bg-cream">
+                        <h5 class="mb-3">Booking Details:</h5>
+                        <p class="mb-2"><strong>Date:</strong> {{ reservation.date|date:"l, F j, Y" }}</p>
+                        <p class="mb-2"><strong>Time:</strong> {{ reservation.time_slot }}</p>
+                        <p class="mb-0"><strong>Guests:</strong> {{ reservation.number_of_guests }}</p>
+                    </div>
+                    
+                    <div class="alert alert-warning">
+                        <strong>Warning:</strong> This action cannot be undone.
+                    </div>
+                    
+                    <form method="POST" class="d-grid gap-2">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger btn-lg">
+                            Yes, Cancel Reservation
+                        </button>
+                        <a href="{% url 'my_bookings' %}" class="btn btn-outline-secondary">
+                            No, Keep Reservation
+                        </a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
