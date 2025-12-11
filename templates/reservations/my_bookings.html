@@ -29,18 +29,27 @@
                         <p class="mb-3 text-muted small">Booked on: {{ reservation.created_at|date:"M j, Y" }}</p>
                         
                         {% if reservation.can_be_modified %}
-                            <div class="btn-group w-100">
+                            <div class="btn-group w-100 mb-2">
                                 <a href="{% url 'edit_reservation' reservation.pk %}" class="btn btn-outline-secondary">
                                     Edit
                                 </a>
-                                <a href="{% url 'cancel_reservation' reservation.pk %}" class="btn btn-outline-danger">
+                                <a href="{% url 'cancel_reservation' reservation.pk %}" class="btn btn-outline-warning">
                                     Cancel
                                 </a>
                             </div>
+                            <a href="{% url 'delete_reservation' reservation.pk %}" class="btn btn-outline-danger w-100">
+                                🗑️ Delete Permanently
+                            </a>
                         {% elif reservation.status == 'cancelled' %}
-                            <p class="text-danger mb-0">This booking has been cancelled</p>
+                            <p class="text-warning mb-2">This booking has been cancelled</p>
+                            <a href="{% url 'delete_reservation' reservation.pk %}" class="btn btn-outline-danger w-100">
+                                🗑️ Delete Permanently
+                            </a>
                         {% else %}
-                            <p class="text-muted mb-0">This booking cannot be modified</p>
+                            <p class="text-muted mb-2">This booking cannot be modified (past date)</p>
+                            <a href="{% url 'delete_reservation' reservation.pk %}" class="btn btn-outline-danger w-100">
+                                🗑️ Delete Permanently
+                            </a>
                         {% endif %}
                     </div>
                 </div>

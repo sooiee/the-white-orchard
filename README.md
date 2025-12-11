@@ -129,33 +129,36 @@ The White Orchard website is designed to provide an elegant and seamless booking
 
 ### DATABASE SCHEMA
 
-The application uses four primary models:
+The application uses four primary models with Django's built-in User model integration:
 
 ```
-┌─────────────────┐
-│    TimeSlot     │
-├─────────────────┤
-│ PK: id          │
-│ time (CharField)│
-│ is_active (Bool)│
-└────────┬────────┘
-         │
-         │ ForeignKey
-         │
-┌────────▼────────────────┐
-│     Reservation         │
-├─────────────────────────┤
-│ PK: id                  │
-│ customer_name (Char)    │
-│ customer_email (Email)  │
-│ customer_phone (Char)   │
-│ date (Date)             │
-│ FK: time_slot           │
-│ number_of_guests (Int)  │
-│ special_requests (Text) │
-│ status (Char)           │
-│ created_at (DateTime)   │
-└─────────────────────────┘
+┌─────────────────┐       ┌─────────────────┐
+│    TimeSlot     │       │   Django User   │
+├─────────────────┤       ├─────────────────┤
+│ PK: id          │       │ PK: id          │
+│ time (CharField)│       │ username        │
+│ is_active (Bool)│       │ email           │
+└────────┬────────┘       │ password        │
+         │                │ ...             │
+         │                └────────┬────────┘
+         │ ForeignKey              │
+         │                         │ ForeignKey (optional)
+         │                         │
+┌────────▼─────────────────────────▼───┐
+│          Reservation                 │
+├──────────────────────────────────────┤
+│ PK: id                               │
+│ FK: user (nullable - guest bookings) │
+│ customer_name (Char)                 │
+│ customer_email (Email)               │
+│ customer_phone (Char)                │
+│ date (Date)                          │
+│ FK: time_slot                        │
+│ number_of_guests (Int)               │
+│ special_requests (Text)              │
+│ status (Char)                        │
+│ created_at (DateTime)                │
+└──────────────────────────────────────┘
 
 ┌─────────────────┐       ┌─────────────────┐
 │   MenuItem      │       │    Enquiry      │
@@ -175,8 +178,16 @@ The application uses four primary models:
 **Model Relationships:**
 
 - `Reservation` has a **ForeignKey** to `TimeSlot` (many-to-one)
+- `Reservation` has an **optional ForeignKey** to `User` (many-to-one, null=True for guest bookings)
 - `MenuItem` is independent (no relationships)
 - `Enquiry` is independent (no relationships)
+
+**Booking System Logic:**
+
+- Authenticated users: Bookings automatically linked to user account
+- Guest bookings: User field remains null, identified by email only
+- My Bookings query: Retrieves by user account OR email (backward compatibility)
+- Authorization: Users can manage bookings they own (by user account or email match)
 
 ### WIREFRAMES
 
@@ -338,10 +349,20 @@ All color combinations meet WCAG 2.1 Level AA standards:
 
 - Confirmation page before cancellation
 - Shows booking details for review
-- Warning about irreversible action
+- Warning about action
 - Only available for future, non-cancelled bookings
 - Updates status to "cancelled" (soft delete)
 - Success message after cancellation
+
+**Delete Reservation** (LO2.2 - CRUD Complete)
+
+- Permanently removes booking from database (hard delete)
+- Available for all bookings (past, future, cancelled)
+- Separate confirmation page with strong warning
+- Authorization check (users can only delete own bookings)
+- Cannot be undone - complete data removal
+- Success message after permanent deletion
+- Accessible from "My Bookings" page for all booking states
 
 
 
@@ -1081,15 +1102,46 @@ WHITENOISE_COMPRESS_OFFLINE = True
 
 ## PROJECT STATUS
 
-**Current Version:** Initial Submission
+**Current Version:** Resubmission (December 2025)
 
-This project has been submitted for feedback. Based on assessor feedback, the following enhancements are planned for resubmission:
+This project has been enhanced based on assessor feedback from the initial submission. The following improvements have been implemented:
 
-- Real-time capacity checking system
-- Interactive calendar widget
-- Email notification system
-- Enhanced test coverage
-- Additional user features
+### Changes Made for Resubmission
+
+**LO1.3 - Agile Methodology Documentation**
+- Added comprehensive Agile Methodology section documenting use of GitHub Projects
+- Documented project board, sprint planning, and user story tracking
+- Included example user story format with acceptance criteria
+- Added MoSCoW prioritization approach
+
+**LO2.2 - Full CRUD Implementation**
+- Implemented true DELETE functionality (hard delete from database)
+- Added `delete_reservation` view with permanent data removal
+- Created dedicated delete confirmation template with strong warnings
+- Added user ForeignKey to Reservation model for proper user account linking
+- Updated my_bookings query to filter by user account (with email fallback for backward compatibility)
+- Pre-populate email field for authenticated users in booking form
+- Enhanced authorization to check both user account and email matches
+
+**LO8.1-8.4 - AI-Assisted Development Documentation**
+- Added comprehensive AI-Assisted Development section covering:
+  - **LO8.1**: Key decisions where AI generated code (models, forms, authorization, templates)
+  - **LO8.2**: AI's role in identifying and resolving bugs (Heroku deployment, email retrieval, accessibility, validation)
+  - **LO8.3**: AI contribution to performance and UX improvements (query optimization, form enhancements, static files, responsive design)
+  - **LO8.4**: How AI influenced development workflow (time savings, code quality, learning, iterative refinement)
+- Included code examples, metrics, and quantitative impact analysis
+- Documented challenges, limitations, and lessons learned
+
+### Technical Improvements Summary
+
+- **Database**: Added User ForeignKey to Reservation model (migration applied)
+- **Views**: Enhanced create, edit, cancel views + new delete view
+- **Authorization**: Improved to support user account OR email matching
+- **Templates**: New delete_confirm.html with permanent deletion warnings
+- **URLs**: Added delete route with proper formatting
+- **Documentation**: Comprehensive Agile and AI sections in README
+
+All criteria from LO1.3, LO2.2, and LO8.1-8.4 have been addressed.
 
 ---
 
