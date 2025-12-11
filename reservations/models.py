@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 from django.core.validators import MinValueValidator, MaxValueValidator
 from datetime import date
 
@@ -30,6 +31,15 @@ class Reservation(models.Model):
         ('cancelled', 'Cancelled'),
     ]
     
+    # User Link (optional for guest bookings)
+    user = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name='reservations'
+    )
+    
     # Customer Information
     customer_name = models.CharField(max_length=100)
     customer_email = models.EmailField()
@@ -44,7 +54,11 @@ class Reservation(models.Model):
     special_requests = models.TextField(blank=True)
     
     # Status
-    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='pending')
+    status = models.CharField(
+        max_length=20,
+        choices=STATUS_CHOICES,
+        default='pending'
+    )
     created_at = models.DateTimeField(auto_now_add=True)
     
     class Meta:
@@ -58,7 +72,7 @@ class Reservation(models.Model):
         return self.date >= date.today() and self.status != 'cancelled'
     
     def can_be_cancelled(self):
-        """Check if reservation can be cancelled (future date, not cancelled)"""
+        """Check if reservation can be cancelled (future, not cancelled)"""
         return self.date >= date.today() and self.status != 'cancelled'
 
 
