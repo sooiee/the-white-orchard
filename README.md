@@ -781,7 +781,8 @@ heroku logs --tail
 
 This project leveraged AI tools (primarily GitHub Copilot) throughout the development lifecycle to enhance productivity, code quality, and problem-solving efficiency. This section documents the key areas where AI contributed to the project.
 
-### LO8.1 - Key Decisions Where AI Generated Code
+### The use of AI's in code creation
+
 
 #### 1. Django Model Structure and Relationships
 
@@ -848,32 +849,9 @@ if reservation.customer_email != request.user.email and not request.user.is_staf
 
 **Rationale**: Ensured secure access control while allowing staff override for administrative purposes.
 
-#### 4. Template Inheritance and Structure
 
-**Decision**: Creating a DRY (Don't Repeat Yourself) template structure with base template and blocks.
 
-**AI Contribution**:
-- Generated `base.html` with proper Django template syntax
-- Suggested block structure (`{% block title %}`, `{% block content %}`)
-- Recommended Bootstrap navbar with authentication conditionals
-- Generated responsive navigation with mobile hamburger menu
-
-**Code Example**:
-```django
-<!-- AI-generated template structure -->
-{% if user.is_authenticated %}
-    <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle">{{ user.username }}</a>
-        <!-- Dropdown menu items -->
-    </li>
-{% else %}
-    <li class="nav-item"><a href="{% url 'login' %}">Login</a></li>
-{% endif %}
-```
-
-**Rationale**: Reduced code duplication and ensured consistent navigation across all pages.
-
-### LO8.2 - AI's Role in Identifying and Resolving Bugs
+### AI's Role in Identifying and Resolving Bugs
 
 #### Bug 1: Bookings Not Showing on Heroku Deployment
 
@@ -895,53 +873,8 @@ heroku run python manage.py migrate
 
 **Outcome**: Confirmed all migrations were applied correctly. Issue resolved by ensuring consistent database usage.
 
-#### Bug 2: Email-Based Booking Retrieval Limitations
 
-**Issue**: Users who registered with different email addresses couldn't see their bookings made as guests.
-
-**AI Assistance**:
-- Identified the problem in `my_bookings` view filtering by email only
-- Suggested adding a `user` ForeignKey to Reservation model
-- Recommended migration strategy to link existing bookings to users
-- Generated code for backward compatibility with guest bookings
-
-**Original Code**:
-```python
-# Problem: Only filters by email
-reservations = Reservation.objects.filter(customer_email=request.user.email)
-```
-
-**AI-Suggested Solution**:
-```python
-# Improved: Filter by user account with email fallback
-reservations = Reservation.objects.filter(
-    models.Q(user=request.user) | models.Q(customer_email=request.user.email)
-)
-```
-
-**Outcome**: Enhanced booking retrieval logic to support both registered users and guest bookings.
-
-#### Bug 3: Accessibility Contrast Issues
-
-**Issue**: Initial color scheme failed WCAG AA contrast requirements (gold and medium gray text).
-
-**AI Assistance**:
-- Ran Lighthouse accessibility audit and identified contrast failures
-- Suggested darkening gold from `#D4AF37` to `#B8941F` for better contrast
-- Recommended changing medium gray from `#666666` to `#444444`
-- Generated updated CSS with improved color values
-
-**Resolution**:
-```css
-/* AI-suggested color improvements */
---gold: #D4AF37;        /* Primary gold */
---gold-dark: #B8941F;   /* Darkened for accessibility */
---text-medium: #444444; /* Improved from #666666 */
-```
-
-**Outcome**: Achieved WCAG AA compliance with 4.5:1+ contrast ratios.
-
-#### Bug 4: Past Bookings Editable
+#### Bug 2: Past Bookings Editable
 
 **Issue**: Users could edit reservations for dates that had already passed.
 
@@ -965,41 +898,14 @@ if not reservation.can_be_modified():
 
 **Outcome**: Prevented modification of past/cancelled bookings, improving data integrity.
 
-### LO8.3 - AI Contribution to Performance and UX Improvements
 
-#### 1. Database Query Optimization
+### AI Contribution to Performance and UX Improvements
 
-**Issue**: N+1 query problem when displaying bookings with time slot information.
-
-**AI Contribution**:
-- Identified inefficient queries in `my_bookings` view
-- Suggested using `select_related('time_slot')` to reduce database hits
-- Recommended `prefetch_related()` for reverse foreign key relationships
-- Generated optimized querysets
-
-**Before**:
-```python
-reservations = Reservation.objects.filter(customer_email=request.user.email)
-# Each reservation access triggers additional query for time_slot
-```
-
-**After**:
-```python
-reservations = Reservation.objects.filter(
-    customer_email=request.user.email
-).select_related('time_slot').order_by('-date')
-# Single query with JOIN, reducing database load
-```
-
-**Impact**: Reduced database queries from ~20 to 2-3 for typical booking list, improving page load time by approximately 40%.
-
-#### 2. Form User Experience Enhancements
+#### 1. Form User Experience Enhancements
 
 **AI Contribution**:
 - Suggested date picker widget with `type='date'` attribute
 - Recommended adding placeholder text for text inputs
-- Generated `aria-required` attributes for accessibility
-- Suggested custom CSS classes for consistent styling
 
 **Implementation**:
 ```python
@@ -1019,7 +925,7 @@ widgets = {
 
 **Impact**: Improved form completion rate by providing native date picker on mobile devices and clearer input expectations.
 
-#### 3. Static File Optimization
+#### 2. Static File Optimization
 
 **AI Contribution**:
 - Suggested implementing WhiteNoise for efficient static file serving
@@ -1036,37 +942,14 @@ WHITENOISE_COMPRESS_OFFLINE = True
 
 **Impact**: Reduced CSS file size by 35% through compression, improving Lighthouse performance score from 87 to 94.
 
-#### 4. Responsive Navigation Design
 
-**AI Contribution**:
-- Generated mobile-first navigation structure
-- Suggested Bootstrap collapse component for mobile menu
-- Recommended touch-friendly button sizes (44x44px minimum)
-- Generated smooth transitions and hover states
 
-**CSS Generated**:
-```css
-/* AI-suggested responsive breakpoints */
-@media (max-width: 768px) {
-    .navbar-nav {
-        text-align: center;
-        padding: 1rem 0;
-    }
-    .nav-link {
-        padding: 0.75rem 1rem;
-        font-size: 1.1rem;
-    }
-}
-```
-
-**Impact**: Improved mobile usability score in Lighthouse from 89 to 98.
-
-### LO8.4 - How AI Influenced Development Workflow
+### How AI Influenced Development Workflow
 
 #### Accelerated Development Cycles
 
 **Time Savings**:
-- **Boilerplate Code**: AI reduced time spent on repetitive code (models, forms, views) by approximately 60%
+- **Boilerplate Code**: AI reduced time spent on repetitive code (models, forms, views) 
 - **Documentation**: AI-assisted commit messages and docstrings saved ~30 minutes per day
 - **Debugging**: AI suggestions for common Django errors reduced debugging time by ~40%
 
@@ -1085,10 +968,6 @@ WHITENOISE_COMPRESS_OFFLINE = True
 - **Security**: AI flagged potential security issues (e.g., suggesting `@login_required`, CSRF tokens)
 - **DRY Principles**: AI identified code duplication opportunities for refactoring
 
-**Metrics**:
-- Python code passed PEP 8 validation with 0 errors (all files)
-- Reduced code duplication by implementing AI-suggested helper methods
-- Improved test coverage from 72% to 87% with AI-generated test cases
 
 #### Learning and Skill Development
 
@@ -1098,11 +977,6 @@ WHITENOISE_COMPRESS_OFFLINE = True
 - **Problem-Solving**: AI's alternative approaches expanded my technical toolkit
 - **Documentation**: AI helped me understand complex concepts by generating explanatory comments
 
-**Specific Examples**:
-- Learned about `get_object_or_404` shortcut through AI suggestion
-- Discovered `F()` expressions for database-level operations
-- Understood query optimization through `select_related` recommendations
-- Gained insight into Django's message framework usage patterns
 
 #### Iterative Refinement Process
 
