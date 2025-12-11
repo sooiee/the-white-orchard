@@ -30,7 +30,7 @@ An elegant Django web application for managing afternoon tea reservations at The
 
 3. [Technologies Used](#technologies-used)
     * [Languages Used](#languages-used)
-    * [Frameworks, Libraries & Programs Used](#frameworks-libraries--programs-used)
+  * [Frameworks, Libraries & Programmes Used](#frameworks-libraries--programmes-used)
 
 4. [Testing](#testing)
 
@@ -58,7 +58,7 @@ This project was developed using Agile methodology principles with iterative dev
 
 - **User Stories**: All user stories (US01-US17) were created as GitHub Issues with acceptance criteria
 - **Project Board**: Kanban-style board with columns: Backlog, To Do, In Progress, Testing, Done
-- **Sprint Planning**: Work was organised into weekly sprints with clear goals and deliverables
+-- **Sprint Planning**: Work was organised into weekly sprints with clear goals and deliverables
 - **MoSCoW Prioritisation**: Features categorised as Must Have, Should Have, Could Have, Won't Have
 - **Labels**: Issues tagged by feature area (authentication, booking, admin, frontend, testing)
 - **Milestones**: Major deliverables tracked (MVP, Authentication, CRUD, Deployment, Testing)
@@ -97,7 +97,7 @@ The White Orchard website is designed to provide an elegant and seamless booking
 - **Elegance First**: Every element reflects the refined nature of afternoon tea service
 - **User-Centric**: Intuitive navigation and clear calls-to-action guide users naturally
 - **Responsive**: Beautiful and functional across all device sizes
-- **Accessible**: WCAG 2.1 compliant with semantic HTML, ARIA labels, and improved color contrast (WCAG AA). All forms use associated labels and ARIA attributes for required fields.
+- **Accessible**: WCAG 2.1 compliant with semantic HTML, ARIA labels, and improved colour contrast (WCAG AA). All forms use associated labels and ARIA attributes for required fields.
 
 ### USER STORIES
 
@@ -120,9 +120,9 @@ The White Orchard website is designed to provide an elegant and seamless booking
 
 #### Admin/Staff Goals
 
-- **US12**: As admin, I want to view all reservations in a centralized dashboard
+- **US12**: As admin, I want to view all reservations in a centralised dashboard
 - **US13**: As admin, I want to filter and search reservations by date, name, or status
-- **US14**: As admin, I want to change reservation status (pending/confirmed/cancelled)
+-- **US14**: As admin, I want to change reservation status (pending/confirmed/cancelled)
 - **US15**: As admin, I want to manage menu items (add, edit, delete)
 - **US16**: As admin, I want to manage available time slots
 - **US17**: As admin, I want to view customer enquiries and mark them as responded
@@ -187,7 +187,7 @@ The application uses four primary models with Django's built-in User model integ
 - Authenticated users: Bookings automatically linked to user account
 - Guest bookings: User field remains null, identified by email only
 - My Bookings query: Retrieves by user account OR email (backward compatibility)
-- Authorization: Users can manage bookings they own (by user account or email match)
+- Authorisation: Users can manage bookings they own (by user account or email match)
 
 ### WIREFRAMES
 
@@ -226,15 +226,15 @@ The combination of Playfair Display and Montserrat creates a perfect balance bet
 
 ### COLOUR SCHEME
 
-The color palette was carefully selected to evoke femininity, elegance, and warmth while maintaining excellent accessibility standards.
+The colour palette was carefully selected to evoke femininity, elegance, and warmth while maintaining excellent accessibility standards.
 
 **Accessibility Changelog (October 2025):**
 
-- All gold and medium text colors darkened for WCAG AA contrast
+- All gold and medium text colours darkened for WCAG AA contrast
 - All form fields use associated labels and ARIA attributes for required fields
 - Focus states and skip links retained
 
-**Primary Colors:**
+**Primary Colours:**
 
 - **Cream White** `#FAF9F6` - Main background, creates warmth and elegance
 - **Cream Light** `#FFFEF9` - Subtle variations for depth
@@ -242,29 +242,29 @@ The color palette was carefully selected to evoke femininity, elegance, and warm
 - **Pink Dark** `#FFC1D5` - Hover states and gradients
 - **Pink Darker** `#FFB3C6` - Active states
 
-**Accent Colors:**
+**Accent Colours:**
 
 - **Gold** `#D4AF37` - Premium feel, used for branding and CTAs
 - **Gold Dark** `#B8941F` - Hover states for gold elements
 
-**Text Colors:**
+**Text Colours:**
 
-- **Dark Gray** `#222222` - Primary text, excellent contrast (WCAG AA)
-- **Medium Gray** `#444444` - Secondary text, improved contrast
+-- **Dark Grey** `#222222` - Primary text, excellent contrast (WCAG AA)
+-- **Medium Grey** `#444444` - Secondary text, improved contrast
 
-**Semantic Colors:**
+**Semantic Colours:**
 
 - **Success** `#28a745` - Confirmed bookings
 - **Warning** `#ffc107` - Pending bookings
-- **Danger** `#dc3545` - Cancelled bookings, delete actions
+-- **Danger** `#dc3545` - Cancelled bookings, delete actions
 
 **Accessibility Compliance:**
 
-All color combinations meet WCAG 2.1 Level AA standards:
+All colour combinations meet WCAG 2.1 Level AA standards:
 
 - Background/text contrast ratios exceed 4.5:1 for normal text
 - Links and interactive elements have 3:1 contrast
-- Gold and accent colors have been darkened for better readability
+- Gold and accent colours have been darkened for better readability
 
 ### IMAGERY ((To be implemented))
 **Image Strategy:**
@@ -331,7 +331,7 @@ All color combinations meet WCAG 2.1 Level AA standards:
 
 - "My Bookings" page for registered users
 - Shows all reservations linked to user's email
-- Color-coded status badges (pending/confirmed/cancelled)
+-- Colour-coded status badges (pending/confirmed/cancelled)
 - Displays date, time, guest count, and special requests
 - Shows booking creation date
 - Empty state with call-to-action when no bookings exist
@@ -341,25 +341,25 @@ All color combinations meet WCAG 2.1 Level AA standards:
 - Only available for future bookings
 - Pre-populated form with existing details
 - Same validation as create form
-- Authorisation check (users can only edit own bookings)
+-- Authorisation check (users can only edit own bookings)
 - Success message after update
-- Prevents editing past or cancelled bookings
+-- Prevents editing past or cancelled bookings
 
 **Cancel Reservation** (US09)
 
 - Confirmation page before cancellation
 - Shows booking details for review
 - Warning about action
-- Only available for future, non-cancelled bookings
-- Updates status to "cancelled" (soft delete)
+-- Only available for future, non-cancelled bookings
+-- Updates status to "cancelled" (soft delete)
 - Success message after cancellation
 
 **Delete Reservation** (LO2.2 - CRUD Complete)
 
 - Permanently removes booking from database (hard delete)
-- Available for all bookings (past, future, cancelled)
+-- Available for all bookings (past, future, cancelled)
 - Separate confirmation page with strong warning
-- Authorization check (users can only delete own bookings)
+- Authorisation check (users can only delete own bookings)
 - Cannot be undone - complete data removal
 - Success message after permanent deletion
 - Accessible from "My Bookings" page for all booking states
@@ -463,7 +463,7 @@ All color combinations meet WCAG 2.1 Level AA standards:
 4. **User Profile Enhancement** (Medium Priority)
    - Profile page with editable details
    - Booking history with filters
-   - Favorite menu items
+  - Favourite menu items
    - Saved special requests/dietary requirements
 
 5. **Enhanced Admin Dashboard** (Low Priority)
@@ -494,7 +494,7 @@ All color combinations meet WCAG 2.1 Level AA standards:
 
 **October 2025 Accessibility Improvements:**
 
-- All gold and medium text colors darkened for WCAG AA contrast
+- All gold and medium text colours darkened for WCAG AA contrast
 - All form fields use associated labels and ARIA attributes for required fields
 - Focus states and skip links retained
 
@@ -520,12 +520,12 @@ All color combinations meet WCAG 2.1 Level AA standards:
 - Skip to main content link
 - Logical tab order throughout
 
-**Color & Contrast**
+**Colour & Contrast**
 
 - All text meets WCAG AA standards (4.5:1 minimum)
 - Links distinguishable from regular text
-- Status badges use icons in addition to color
-- Never rely on color alone for information
+- Status badges use icons in addition to colour
+- Never rely on colour alone for information
 
 
 **Forms**
@@ -560,7 +560,7 @@ All color combinations meet WCAG 2.1 Level AA standards:
 - **JavaScript** - Interactive elements (via Bootstrap)
 - **Jinja2** - Django template language
 
-### FRAMEWORKS, LIBRARIES & PROGRAMS USED
+### FRAMEWORKS, LIBRARIES & PROGRAMMES USED
 
 **Backend Framework:**
 
@@ -583,7 +583,7 @@ All color combinations meet WCAG 2.1 Level AA standards:
   - Navigation components
   - Form controls
   - Alert components
-  - Modal dialogs
+  - Modal dialogues
 
 **Fonts:**
 
@@ -835,7 +835,7 @@ class Reservation(models.Model):
 **AI Contribution**:
 - Generated `ReservationForm` class with custom `clean_date()` method
 - Suggested date validation to prevent past bookings
-- Recommended widget customization for better UX (`DateInput` with type='date')
+- Recommended widget customisation for better UX (`DateInput` with type='date')
 - Generated error messages for validation failures
 
 **Code Example**:
@@ -850,19 +850,19 @@ def clean_date(self):
 
 **Rationale**: Prevented invalid data entry and improved user experience with immediate feedback.
 
-#### 3. Authorization and Permission Checks
+#### 3. Authorisation and Permission Checks
 
 **Decision**: Restricting booking edit/cancel operations to authenticated users who own the booking.
 
 **AI Contribution**:
-- Generated authorization logic in views
+- Generated authorisation logic in views
 - Suggested comparison between `reservation.customer_email` and `request.user.email`
 - Recommended `@login_required` decorator usage
-- Generated appropriate error messages for unauthorized access
+- Generated appropriate error messages for unauthorised access
 
 **Code Example**:
 ```python
-# AI-assisted authorization
+# AI-assisted authorisation
 if reservation.customer_email != request.user.email and not request.user.is_staff:
     messages.error(request, 'You do not have permission to edit this reservation.')
     return redirect('my_bookings')
@@ -946,7 +946,7 @@ widgets = {
 
 **Impact**: Improved form completion rate by providing native date picker on mobile devices and clearer input expectations.
 
-#### 2. Static File Optimization
+#### 2. Static File Optimisation
 
 **AI Contribution**:
 - Suggested implementing WhiteNoise for efficient static file serving
@@ -977,7 +977,7 @@ WHITENOISE_COMPRESS_OFFLINE = True
 **Example Workflow**:
 1. Describe feature requirement in comment
 2. AI generates initial implementation
-3. Review and customize generated code
+3. Review and customise generated code
 4. Test functionality
 5. Commit with AI-suggested message format
 
@@ -1005,7 +1005,7 @@ WHITENOISE_COMPRESS_OFFLINE = True
 1. **Initial Prompt**: Describe feature or problem
 2. **AI Generation**: Receive code suggestion
 3. **Critical Review**: Evaluate suggestion against requirements
-4. **Customization**: Modify AI code to fit specific needs
+4. **Customisation**: Modify AI code to fit specific needs
 5. **Testing**: Verify functionality
 6. **Refinement**: Request alternative approaches if needed
 
@@ -1013,7 +1013,7 @@ WHITENOISE_COMPRESS_OFFLINE = True
 - **Round 1**: AI generated basic date validation
 - **Round 2**: Requested more specific error messages
 - **Round 3**: Asked for validation combining date and time slot availability
-- **Final**: Customized solution addressing all edge cases
+- **Final**: Customised solution addressing all edge cases
 
 #### Challenges and Limitations
 
@@ -1058,7 +1058,7 @@ WHITENOISE_COMPRESS_OFFLINE = True
 - **Django Documentation** - Various code snippets adapted from official documentation
   - Forms validation patterns
   - Authentication views structure
-  - Admin customization examples
+  - Admin customisation examples
   
 - **Bootstrap 5 Documentation** - Component implementations
   - Navigation bar with dropdown
@@ -1087,7 +1087,7 @@ WHITENOISE_COMPRESS_OFFLINE = True
 
 - Professional photography planned for future updates
 - Original images of venue and food items
-- Licensed stock photos from Unsplash/Pexels if needed
+- Licenced stock photos from Unsplash/Pexels if needed
 
 ### ACKNOWLEDGMENTS
 
@@ -1125,9 +1125,9 @@ This project has been enhanced based on assessor feedback from the initial submi
 
 **LO8.1-8.4 - AI-Assisted Development Documentation**
 - Added comprehensive AI-Assisted Development section covering:
-  - **LO8.1**: Key decisions where AI generated code (models, forms, authorization, templates)
+  - **LO8.1**: Key decisions where AI generated code (models, forms, authorisation, templates)
   - **LO8.2**: AI's role in identifying and resolving bugs (Heroku deployment, email retrieval, accessibility, validation)
-  - **LO8.3**: AI contribution to performance and UX improvements (query optimization, form enhancements, static files, responsive design)
+  - **LO8.3**: AI contribution to performance and UX improvements (query optimisation, form enhancements, static files, responsive design)
   - **LO8.4**: How AI influenced development workflow (time savings, code quality, learning, iterative refinement)
 - Included code examples, metrics, and quantitative impact analysis
 - Documented challenges, limitations, and lessons learned
@@ -1136,7 +1136,7 @@ This project has been enhanced based on assessor feedback from the initial submi
 
 - **Database**: Added User ForeignKey to Reservation model (migration applied)
 - **Views**: Enhanced create, edit, cancel views + new delete view
-- **Authorization**: Improved to support user account OR email matching
+- **Authorisation**: Improved to support user account OR email matching
 - **Templates**: New delete_confirm.html with permanent deletion warnings
 - **URLs**: Added delete route with proper formatting
 - **Documentation**: Comprehensive Agile and AI sections in README

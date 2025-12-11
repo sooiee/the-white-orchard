@@ -38,13 +38,21 @@ def create_reservation(request):
 def reservation_detail(request, pk):
     """Show reservation confirmation"""
     reservation = get_object_or_404(Reservation, pk=pk)
-    return render(request, 'reservations/detail.html', {'reservation': reservation})
+    return render(
+        request,
+        'reservations/detail.html',
+        {'reservation': reservation}
+    )
 
 
 def reservation_list(request):
     """List all reservations (for admin)"""
     reservations = Reservation.objects.all().order_by('-date')
-    return render(request, 'reservations/list.html', {'reservations': reservations})
+    return render(
+        request,
+        'reservations/list.html',
+        {'reservations': reservations}
+    )
 
 
 @login_required
@@ -150,6 +158,7 @@ def cancel_reservation(request, pk):
         'reservation': reservation,
     }
     return render(request, 'reservations/cancel_confirm.html', context)
+
 
 @login_required
 def delete_reservation(request, pk):

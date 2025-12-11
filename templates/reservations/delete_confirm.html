@@ -1,62 +1,53 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 
 {% block title %}Delete Reservation - The White Orchard{% endblock %}
 
 {% block content %}
-<div class="container py-5">
+<div class="container my-5">
     <div class="row justify-content-center">
-        <div class="col-md-6">
-            <div class="card shadow-lg">
-                <div class="card-body p-5 text-center">
-                    <div class="mb-4">
-                        <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="#dc3545" stroke-width="2">
-                            <path d="M3 6h18M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2"></path>
-                            <line x1="10" y1="11" x2="10" y2="17"></line>
-                            <line x1="14" y1="11" x2="14" y2="17"></line>
-                        </svg>
+        <div class="col-md-8 col-lg-6">
+            <div class="card shadow">
+                <div class="card-header bg-danger text-white">
+                    <h2 class="mb-0">⚠️ Delete Reservation</h2>
+                </div>
+                <div class="card-body">
+                    <div class="alert alert-danger" role="alert">
+                        <strong>Warning:</strong> This action is permanent and cannot be undone. 
+                        The booking will be completely removed from the system.
                     </div>
-                    
-                    <h2 class="mb-3 page-title">
-                        Permanently Delete Reservation?
-                    </h2>
-                    
-                    <p class="lead text-muted mb-4">
-                        Are you sure you want to permanently delete this booking from the database?
-                    </p>
-                    
-                    <div class="text-start p-4 mb-4 bg-cream">
-                        <h5 class="mb-3">Booking Details:</h5>
-                        <p class="mb-2"><strong>Customer:</strong> {{ reservation.customer_name }}</p>
-                        <p class="mb-2"><strong>Email:</strong> {{ reservation.customer_email }}</p>
-                        <p class="mb-2"><strong>Date:</strong> {{ reservation.date|date:"l, F j, Y" }}</p>
-                        <p class="mb-2"><strong>Time:</strong> {{ reservation.time_slot }}</p>
-                        <p class="mb-2"><strong>Guests:</strong> {{ reservation.number_of_guests }}</p>
-                        <p class="mb-0"><strong>Status:</strong> 
-                            <span class="badge 
-                                {% if reservation.status == 'confirmed' %}bg-success
-                                {% elif reservation.status == 'pending' %}bg-warning
-                                {% else %}bg-secondary{% endif %}">
-                                {{ reservation.get_status_display }}
-                            </span>
-                        </p>
+
+                    <h4 class="mb-3">Are you sure you want to delete this reservation?</h4>
+
+                    <div class="reservation-details mb-4">
+                        <h5>Booking Details:</h5>
+                        <ul class="list-unstyled">
+                            <li><strong>Customer:</strong> {{ reservation.customer_name }}</li>
+                            <li><strong>Email:</strong> {{ reservation.customer_email }}</li>
+                            <li><strong>Phone:</strong> {{ reservation.customer_phone }}</li>
+                            <li><strong>Date:</strong> {{ reservation.date }}</li>
+                            <li><strong>Time:</strong> {{ reservation.time_slot }}</li>
+                            <li><strong>Guests:</strong> {{ reservation.number_of_guests }}</li>
+                            {% if reservation.special_requests %}
+                            <li><strong>Special Requests:</strong> {{ reservation.special_requests }}</li>
+                            {% endif %}
+                            <li><strong>Status:</strong> 
+                                <span class="badge bg-{% if reservation.status == 'confirmed' %}success{% elif reservation.status == 'pending' %}warning{% else %}secondary{% endif %}">
+                                    {{ reservation.get_status_display }}
+                                </span>
+                            </li>
+                        </ul>
                     </div>
-                    
-                    <div class="alert alert-danger">
-                        <strong>⚠️ PERMANENT DELETION WARNING</strong>
-                        <p class="mb-0 mt-2">This will permanently remove the reservation from the database. This action cannot be undone. All booking data will be lost.</p>
-                    </div>
-                    
-                    <form method="POST" class="d-grid gap-2">
+
+                    <form method="POST">
                         {% csrf_token %}
-                        <button type="submit" class="btn btn-danger btn-lg">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: inline-block; vertical-align: middle; margin-right: 8px;">
-                                <path d="M3 6h18M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2"></path>
-                            </svg>
-                            Yes, Permanently Delete
-                        </button>
-                        <a href="{% url 'my_bookings' %}" class="btn btn-outline-secondary">
-                            No, Go Back
-                        </a>
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-danger btn-lg">
+                                🗑️ Yes, Permanently Delete This Booking
+                            </button>
+                            <a href="{% url 'my_bookings' %}" class="btn btn-secondary btn-lg">
+                                ← Cancel and Go Back
+                            </a>
+                        </div>
                     </form>
                 </div>
             </div>
