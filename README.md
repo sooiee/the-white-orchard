@@ -11,6 +11,7 @@ An elegant Django web application for managing afternoon tea reservations at The
 ## TABLE OF CONTENTS
 
 1. [Design & Planning](#design--planning)
+    * [Agile Methodology](#agile-methodology)
     * [User Experience (UX)](#user-experience-ux)
     * [User Stories](#user-stories)
     * [Database Schema](#database-schema)
@@ -21,8 +22,6 @@ An elegant Django web application for managing afternoon tea reservations at The
     
 2. [Features](#features)
     * [Existing Features](#existing-features)
-    * [Authentication System](#authentication-system)
-    * [Booking Management](#booking-management)
     * [Navigation](#navigation)
     * [Footer](#footer)
     * [Future Implementations](#future-implementations)
@@ -30,7 +29,7 @@ An elegant Django web application for managing afternoon tea reservations at The
 
 3. [Technologies Used](#technologies-used)
     * [Languages Used](#languages-used)
-  * [Frameworks, Libraries & Programmes Used](#frameworks-libraries--programmes-used)
+    * [Frameworks, Libraries & Programmes Used](#frameworks-libraries--programmes-used)
 
 4. [Testing](#testing)
 
@@ -38,11 +37,21 @@ An elegant Django web application for managing afternoon tea reservations at The
     * [Local Development](#local-development)
     * [Heroku Deployment](#heroku-deployment)
 
-6. [Credits](#credits)
+6. [AI-Assisted Development](#ai-assisted-development)
+    * [The use of AI's in code creation](#the-use-of-ais-in-code-creation)
+    * [AI's Role in Identifying and Resolving Bugs](#ais-role-in-identifying-and-resolving-bugs)
+    * [AI Contribution to Performance and UX Improvements](#ai-contribution-to-performance-and-ux-improvements)
+    * [How AI Influenced Development Workflow](#how-ai-influenced-development-workflow)
+
+7. [Credits](#credits)
     * [Code Used](#code-used)
     * [Content](#content)
     * [Media](#media)
     * [Acknowledgments](#acknowledgments)
+
+8. [Project Status](#project-status)
+    * [Changes Made for Resubmission](#changes-made-for-resubmission)
+    * [Technical Improvements Summary](#technical-improvements-summary)
 
 ---
 
@@ -1112,7 +1121,7 @@ This project has been enhanced based on assessor feedback from the initial submi
 - Added comprehensive Agile Methodology section documenting use of GitHub Projects
 - Documented project board, sprint planning, and user story tracking
 - Included example user story format with acceptance criteria
-- Added MoSCoW prioritization approach
+- Added MoSCoW prioritisation approach
 
 **LO2.2 - Full CRUD Implementation**
 - Implemented true DELETE functionality (hard delete from database)
@@ -1121,7 +1130,7 @@ This project has been enhanced based on assessor feedback from the initial submi
 - Added user ForeignKey to Reservation model for proper user account linking
 - Updated my_bookings query to filter by user account (with email fallback for backward compatibility)
 - Pre-populate email field for authenticated users in booking form
-- Enhanced authorization to check both user account and email matches
+- Enhanced authorisation to check both user account and email matches
 
 **LO8.1-8.4 - AI-Assisted Development Documentation**
 - Added comprehensive AI-Assisted Development section covering:
