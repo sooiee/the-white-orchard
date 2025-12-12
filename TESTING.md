@@ -26,7 +26,7 @@ This document contains comprehensive testing information for The White Orchard a
 
 **Total Tests:** 10 
 **Status:** ✅ All Passing  
-**Coverage:** 85%+ (as of October 2025)
+**Coverage:** 85%+ (as of December 2025)
 **Framework:** Django
 
 ### Running Tests
@@ -181,6 +181,11 @@ All features tested manually across multiple devices and browsers. Tests repeate
 | Cancel future booking | Click cancel, confirm | Status changed to cancelled | Booking marked as cancelled | ✅ Pass |
 | Cancel confirmation | Click cancel | Confirmation page shown | Details displayed, confirm/keep options | ✅ Pass |
 | Cancel past booking | Try to cancel past booking | Cancel button disabled | Button not shown | ✅ Pass |
+| **Delete Booking** |
+| Delete any booking | Click delete, confirm | Booking permanently removed | Booking deleted from database | ✅ Pass |
+| Delete confirmation | Click delete | Confirmation page shown | Warning message displayed | ✅ Pass |
+| Delete authorisation | Try to delete another user's booking | Access denied | Redirected, error message | ✅ Pass |
+| Delete button visibility | View bookings list | Delete button available | Button shown for all bookings | ✅ Pass |
 
 
 
@@ -232,35 +237,35 @@ All features tested manually across multiple devices and browsers. Tests repeate
 
 ### First-Time Visitor Goals
 
-| User Story | Test | Result | Evidence |
-|------------|------|--------|----------|
-| **US01:** Understand site purpose | Visit home page | Hero section clearly explains afternoon tea offering | 
-| **US02:** View menu | Navigate to menu page | All 8 items displayed with descriptions | 
-| **US03:** Make reservation without account | Fill booking form as guest | Reservation created successfully | 
-| **US04:** Find location & hours | Visit about page | All information clearly displayed | 
+| User Story | Test | Result |
+|------------|------|--------|
+| **US01:** Understand site purpose | Visit home page | Hero section clearly explains afternoon tea offering |
+| **US02:** View menu | Navigate to menu page | All 8 items displayed with descriptions |
+| **US03:** Make reservation without account | Fill booking form as guest | Reservation created successfully |
+| **US04:** Find location & hours | Visit about page | All information clearly displayed |
 | **US05:** Mobile responsiveness | Test on mobile device | Site fully functional on mobile | 
 
 ### Registered User Goals
 
-| User Story | Test | Result | Evidence |
-|------------|------|--------|----------|
-| **US06:** Create account | Register with valid details | Account created, auto-login | 
-| **US07:** View my bookings | Login, navigate to My Bookings | All user bookings displayed | 
-| **US08:** Edit booking | Click edit on future booking | Form loads, changes save | 
-| **US09:** Cancel booking | Click cancel, confirm | Booking cancelled successfully | 
-| **US10:** See username when logged in | Login successfully | Username shown in navigation dropdown | 
+| User Story | Test | Result |
+|------------|------|--------|
+| **US06:** Create account | Register with valid details | Account created, auto-login |
+| **US07:** View my bookings | Login, navigate to My Bookings | All user bookings displayed |
+| **US08:** Edit booking | Click edit on future booking | Form loads, changes save |
+| **US09:** Cancel booking | Click cancel, confirm | Booking cancelled successfully |
+| **US10:** See username when logged in | Login successfully | Username shown in navigation dropdown |
 | **US11:** Send enquiry | Fill contact form, submit | Enquiry saved, confirmation shown | 
 
 ### Admin Goals
 
-| User Story | Test | Result | Evidence |
-|------------|------|--------|----------|
-| **US12:** View all reservations | Access admin panel | All bookings visible in list | 
-| **US13:** Filter reservations | Use admin filters | Results filtered correctly | 
-| **US14:** Change booking status | Edit reservation in admin | Status updated | 
-| **US15:** Manage menu items | Add/edit/delete items | CRUD operations successful | 
-| **US16:** Manage time slots | Edit time slots | Changes reflected on site | 
-| **US17:** View enquiries | Check enquiries in admin | All enquiries visible | 
+| User Story | Test | Result |
+|------------|------|--------|
+| **US12:** View all reservations | Access admin panel | All bookings visible in list |
+| **US13:** Filter reservations | Use admin filters | Results filtered correctly |
+| **US14:** Change booking status | Edit reservation in admin | Status updated |
+| **US15:** Manage menu items | Add/edit/delete items | CRUD operations successful |
+| **US16:** Manage time slots | Edit time slots | Changes reflected on site |
+| **US17:** View enquiries | Check enquiries in admin | All enquiries visible |
 ---
 
 ## CODE VALIDATION
@@ -763,8 +768,8 @@ Add character counter and limit in form.
 
 ---
 
-**Last Updated:** October 2025  
-**Testing Period:** September - October 2025
+**Last Updated:** December 2025  
+**Testing Period:** September - December 2025
 
 ---
 
